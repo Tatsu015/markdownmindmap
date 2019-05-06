@@ -1,0 +1,82 @@
+QMainWindow{
+	color: #565b89;
+	font-family:Meiryo UI;
+	background-color:#EEEEEE;
+}
+
+QWidget{
+	color: #565b89;
+	font-family:Meiryo UI;
+	background-color:#EEEEEE;
+}
+
+QMenu{
+	color: #EEEEEE;
+	font-family:Meiryo UI;
+	background-color:#9db5cf;
+}
+
+QMenuBar{
+	color: #EEEEEE;
+	font-family:Meiryo UI;
+	background-color:#9db5cf;
+}
+
+QMenuBar::item{
+	color: #EEEEEE;
+	font-family:Meiryo UI;
+	background-color: transparent;
+}
+
+QPushButton{
+	color: #565b89;
+	font-family:Meiryo UI;
+	background-color:#d4dbe5;
+	border-color: #000044;
+	border-style: solid;
+	border-radius: 5;
+}
+
+QPushButton:hover{
+	color: #565b89;
+	font-family:Meiryo UI;
+	background-color:#9db5cf;
+	border-color: #000044;
+	border-style: solid;
+	border-radius: 5;
+}
+
+QPushButton:pressed{
+	color: #565b89;
+	font-family:Meiryo UI;
+	background-color:#d4dbe5;
+	border-color: #000044;
+	border-style: solid;
+	border-radius: 5;
+}
+
+QLabel{
+	color: #565b89;
+	font-family:Meiryo UI;
+}
+
+QLineEdit{
+	color: #565b89;
+	font-family:Meiryo UI;
+	background-color:#d4dbe5;
+}
+
+QTextEdit{
+	color: #565b89;
+	font-family:Meiryo UI;
+	background-color:#d4dbe5;
+}
+
+QTextBrowser{
+	color: #000000;
+	font-family:Meiryo UI;
+	background-color:#EEEEEE;
+	border-color: #000044;
+	border-style: solid;
+	border-radius: 5;
+}
