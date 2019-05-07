@@ -3,7 +3,7 @@
 
 #include <QTextEdit>
 
-class Document;
+class QTimer;
 
 class CodeEditor : public QTextEdit {
   Q_OBJECT
@@ -13,7 +13,11 @@ public:
   virtual ~CodeEditor();
 
 private slots:
-  void onUpdateDocument();
+  void onStartTimer();
+  void onUpdateModel();
+
+private:
+  QTimer* m_timer = nullptr;
 };
 
 #endif // CODEEDITOR_H

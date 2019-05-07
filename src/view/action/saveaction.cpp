@@ -22,7 +22,7 @@ SaveAction::~SaveAction() {
 }
 
 void SaveAction::execute() {
-  const QString editedData = Application::getInstance()->document()->data();
+  const QString editedData = Application::getInstance()->document()->toPlainText();
 
   // TODO more consider...
   Node* rootNode = MarkdownParser::getInstance()->parse(editedData);
@@ -33,18 +33,19 @@ void SaveAction::execute() {
     scene->addItem(rootNode);
   }
 
-  QString projectPath;
+  QString filePath;
   if (Application::getInstance()->document()->filePath().isEmpty()) {
-    projectPath = QFileDialog::getSaveFileName(nullptr, QObject::tr("Save file"), QDir::currentPath(),
-                                               QObject::tr("project files (*.mdmm)"));
+    filePath = QFileDialog::getSaveFileName(nullptr, QObject::tr("Save file"), QDir::currentPath(),
+                                            QObject::tr("project files (*.mdmm)"));
   } else {
-    projectPath = Application::getInstance()->document()->filePath();
+    filePath = Application::getInstance()->document()->filePath();
   }
 
-  QFile f(projectPath);
+  QFile f(filePath);
   if (!f.open(QIODevice::WriteOnly)) {
     return;
   }
+  Application::getInstance()->document()->setFilePath(filePath);
   QTextStream out(&f);
   out.setCodec("UTF-8");
   out << editedData;

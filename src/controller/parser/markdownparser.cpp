@@ -48,8 +48,11 @@ Node* MarkdownParser::parse(const QString& data) {
 QStringList MarkdownParser::removeComment(const QString& data) {
   QStringList validLines;
   foreach (QString line, data.split(RETURN_CODE, QString::SkipEmptyParts)) {
+    // skip commentout, empty only blank line
     if (!line.contains(COMMENT_KEYWORD)) {
-      validLines << line;
+      if (!line.simplified().isEmpty()) {
+        validLines << line;
+      }
     }
   }
   return validLines;

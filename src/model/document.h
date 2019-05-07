@@ -8,14 +8,10 @@ public:
   Document(QObject* parent = nullptr);
   virtual ~Document();
 
-  void setData(const QString& data);
-  QString data() const;
-
   QString filePath() const;
   void setFilePath(const QString& filePath);
 
 private:
-  QString m_data;
   QString m_filePath;
 };
 

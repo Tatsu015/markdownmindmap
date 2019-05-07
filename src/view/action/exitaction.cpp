@@ -22,7 +22,7 @@ ExitAction::~ExitAction() {
 }
 
 void ExitAction::execute() {
-  const QString editedData = Application::getInstance()->document()->data();
+  const QString editedData = Application::getInstance()->document()->toPlainText();
   Node* rootNode = MarkdownParser::getInstance()->parse(editedData);
   if (rootNode) {
     Layouter::getInstance()->Layout(rootNode);
