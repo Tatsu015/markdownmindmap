@@ -1,10 +1,9 @@
 #include "codeeditor.h"
 #include "controller/application.h"
-#include "controller/layouter/layouter.h"
 #include "controller/parser/markdownparser.h"
 #include "model/document.h"
-#include "model/node.h"
-#include "model/scene.h"
+#include "model/graphics/node.h"
+#include "model/graphics/scene.h"
 #include "ui_mainwindow.h"
 #include "view/graphicsview/graphicsview.h"
 #include <QDebug>
@@ -26,11 +25,8 @@ void CodeEditor::onStartTimer() {
 
 void CodeEditor::onUpdateModel() {
   Node* rootNode = MarkdownParser::getInstance()->parse(toPlainText());
-  if (rootNode) {
-    Layouter::getInstance()->Layout(rootNode);
-    QGraphicsScene* scene = Application::getInstance()->ui()->graphicsView->scene();
-    scene->clear();
-    scene->addItem(rootNode);
-  }
+  Scene* scene = Application::getInstance()->ui()->graphicsView->customScene();
+  scene->addNodeItem(rootNode);
+
   m_timer->stop();
 }

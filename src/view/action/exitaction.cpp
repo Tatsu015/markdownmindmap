@@ -1,14 +1,13 @@
 #include "exitaction.h"
 #include "controller/application.h"
-#include "controller/layouter/layouter.h"
 #include "controller/parser/markdownparser.h"
 #include "model/document.h"
-#include "model/node.h"
+#include "model/graphics/node.h"
+#include "model/graphics/scene.h"
 #include "ui_mainwindow.h"
 #include <QAction>
 #include <QFile>
 #include <QFileDialog>
-#include <QGraphicsScene>
 #include <QMessageBox>
 #include <QTextStream>
 
@@ -24,12 +23,8 @@ ExitAction::~ExitAction() {
 void ExitAction::execute() {
   const QString editedData = Application::getInstance()->document()->toPlainText();
   Node* rootNode = MarkdownParser::getInstance()->parse(editedData);
-  if (rootNode) {
-    Layouter::getInstance()->Layout(rootNode);
-    QGraphicsScene* scene = Application::getInstance()->ui()->graphicsView->scene();
-    scene->clear();
-    scene->addItem(rootNode);
-  }
+  Scene* scene = Application::getInstance()->ui()->graphicsView->customScene();
+  scene->addNodeItem(rootNode);
 
   QString projectPath;
   if (Application::getInstance()->document()->filePath().isEmpty()) {

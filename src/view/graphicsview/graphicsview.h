@@ -5,6 +5,7 @@
 
 class QWheelEvent;
 class QKeyEvent;
+class Scene;
 
 class GraphicsView : public QGraphicsView {
 public:
@@ -15,6 +16,7 @@ public:
 
   virtual void keyPressEvent(QKeyEvent* event);
   virtual void keyReleaseEvent(QKeyEvent* event);
+  Scene* customScene() const;
 
 private slots:
   void onScalingTime(qreal x);

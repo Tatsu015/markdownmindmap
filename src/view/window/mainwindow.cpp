@@ -1,11 +1,10 @@
 #include "mainwindow.h"
 #include "controller/application.h"
-#include "controller/layouter/decorator/lefttorighttreelayoutdecorator.h"
-#include "controller/layouter/layouter.h"
 #include "controller/parser/markdownparser.h"
 #include "model/document.h"
-#include "model/node.h"
-#include "model/scene.h"
+#include "model/graphics/node.h"
+#include "model/graphics/proxy/lefttorighttreelayoutproxy.h"
+#include "model/graphics/scene.h"
 #include "ui_mainwindow.h"
 #include "view/action/exitaction.h"
 #include "view/action/openaction.h"
@@ -22,7 +21,6 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), m_ui(new Ui::Main
   Application::getInstance()->setUi(m_ui);
 
   setupScene();
-  setupLayouter();
   setupMenu();
   setupStyleSheet();
 }
@@ -33,11 +31,6 @@ MainWindow::~MainWindow() {
 
 void MainWindow::setupScene() {
   m_ui->graphicsView->setScene(m_scene);
-}
-
-void MainWindow::setupLayouter() {
-  Layouter::getInstance()->addLayouterDecorator(new LeftToRightTreeLayoutDecorator());
-  Layouter::getInstance()->setDefaultLayoutDecolatorName(LEFT_TO_RIGHT_TREE_LAYOUT_DECOLATOR);
 }
 
 void MainWindow::setupMenu() {

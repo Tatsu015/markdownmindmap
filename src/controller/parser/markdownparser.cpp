@@ -1,5 +1,5 @@
 #include "markdownparser.h"
-#include "model/node.h"
+#include "model/graphics/node.h"
 #include <QDebug>
 
 const static QString COMMENT_KEYWORD = "#";

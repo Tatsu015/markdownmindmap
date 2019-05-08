@@ -1,15 +1,15 @@
 #ifndef LEFTTORIGHTTREELAYOUTDECORATOR_H
 #define LEFTTORIGHTTREELAYOUTDECORATOR_H
 
-#include "abstractlayouterdecorator.h"
+#include "abstractlayoutproxy.h"
 #include <QString>
 
 const static QString LEFT_TO_RIGHT_TREE_LAYOUT_DECOLATOR = "LeftToRightTreeLayoutDecorator";
 
-class LeftToRightTreeLayoutDecorator : public AbstractLayouterDecorator {
+class LeftToRightTreeLayoutProxy : public AbstractLayoutProxy {
 public:
-  LeftToRightTreeLayoutDecorator();
-  virtual ~LeftToRightTreeLayoutDecorator();
+  LeftToRightTreeLayoutProxy();
+  virtual ~LeftToRightTreeLayoutProxy();
 
   void layout(Node* rootNode);
   virtual QString name() const;

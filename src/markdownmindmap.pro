@@ -25,41 +25,41 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-    controller/layouter/decorator/abstractlayouterdecorator.cpp \
-    controller/layouter/layouter.cpp \
     controller/parser/markdownparser.cpp \
-    model/node.cpp \
-    model/scene.cpp \
-    view/graphicsview/graphicsview.cpp \
-    view/window/mainwindow.cpp \
-    main.cpp \
-    controller/layouter/decorator/lefttorighttreelayoutdecorator.cpp \
-    model/connection.cpp \
+    controller/application.cpp \
+    model/graphics/proxy/abstractlayoutproxy.cpp \
+    model/graphics/proxy/lefttorighttreelayoutproxy.cpp \
+    model/graphics/connection.cpp \
+    model/graphics/node.cpp \
+    model/graphics/scene.cpp \
     model/document.cpp \
+    view/action/abstractaction.cpp \
+    view/action/exitaction.cpp \
     view/action/openaction.cpp \
     view/action/saveaction.cpp \
-    view/action/exitaction.cpp \
-    view/action/abstractaction.cpp \
-    controller/application.cpp \
-    view/codeeditor/codeeditor.cpp
+    view/codeeditor/codeeditor.cpp \
+    view/graphicsview/graphicsview.cpp \
+    view/window/mainwindow.cpp \
+    main.cpp
+
 
 HEADERS += \
-    controller/layouter/decorator/abstractlayouterdecorator.h \
-    controller/layouter/layouter.h \
     controller/parser/markdownparser.h \
-    model/node.h \
-    model/scene.h \
-    view/graphicsview/graphicsview.h \
-    view/window/mainwindow.h \
-    controller/layouter/decorator/lefttorighttreelayoutdecorator.h \
-    model/connection.h \
+    controller/application.h \
+    model/graphics/proxy/abstractlayoutproxy.h \
+    model/graphics/proxy/lefttorighttreelayoutproxy.h \
+    model/graphics/connection.h \
+    model/graphics/node.h \
+    model/graphics/scene.h \
     model/document.h \
+    view/action/abstractaction.h \
+    view/action/exitaction.h \
     view/action/openaction.h \
     view/action/saveaction.h \
-    view/action/exitaction.h \
-    view/action/abstractaction.h \
-    controller/application.h \
-    view/codeeditor/codeeditor.h
+    view/codeeditor/codeeditor.h \
+    view/graphicsview/graphicsview.h \
+    view/window/mainwindow.h
+
 
 FORMS += \
     view/window/mainwindow.ui

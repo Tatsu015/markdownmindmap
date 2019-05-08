@@ -1,23 +1,23 @@
-#include "lefttorighttreelayoutdecorator.h"
-#include "model/connection.h"
-#include "model/node.h"
+#include "lefttorighttreelayoutproxy.h"
+#include "model/graphics/connection.h"
+#include "model/graphics/node.h"
 #include <QDebug>
 #include <QRectF>
 
 const qreal CHILD_TO_PARENT_SPACE = 36;
 const qreal CHILD_TO_CHILD_SPACE = -5; // TODO why minus???
 
-LeftToRightTreeLayoutDecorator::LeftToRightTreeLayoutDecorator() : AbstractLayouterDecorator() {
+LeftToRightTreeLayoutProxy::LeftToRightTreeLayoutProxy() : AbstractLayoutProxy() {
 }
 
-LeftToRightTreeLayoutDecorator::~LeftToRightTreeLayoutDecorator() {
+LeftToRightTreeLayoutProxy::~LeftToRightTreeLayoutProxy() {
 }
 
-QString LeftToRightTreeLayoutDecorator::name() const {
+QString LeftToRightTreeLayoutProxy::name() const {
   return LEFT_TO_RIGHT_TREE_LAYOUT_DECOLATOR;
 }
 
-qreal LeftToRightTreeLayoutDecorator::layoutChild(Node* node) {
+qreal LeftToRightTreeLayoutProxy::layoutChild(Node* node) {
   const QRectF br = node->boundingRect();
   if (!node->hasChild()) {
     return br.height();
@@ -38,11 +38,11 @@ qreal LeftToRightTreeLayoutDecorator::layoutChild(Node* node) {
   return qMax(childHeight, br.height());
 }
 
-qreal LeftToRightTreeLayoutDecorator::treeHeight(Node* node) {
+qreal LeftToRightTreeLayoutProxy::treeHeight(Node* node) {
   return qMax(childrenHeight(node), node->boundingRect().height());
 }
 
-qreal LeftToRightTreeLayoutDecorator::childrenHeight(Node* node) {
+qreal LeftToRightTreeLayoutProxy::childrenHeight(Node* node) {
   if (!node->hasChild()) {
     return 0;
   }

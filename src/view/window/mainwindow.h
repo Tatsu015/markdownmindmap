@@ -19,7 +19,6 @@ public:
 
 private:
   void setupScene();
-  void setupLayouter();
   void setupMenu();
   void setupStyleSheet();
 

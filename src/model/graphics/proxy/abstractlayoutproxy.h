@@ -5,10 +5,10 @@
 
 class Node;
 
-class AbstractLayouterDecorator {
+class AbstractLayoutProxy {
 public:
-  AbstractLayouterDecorator();
-  virtual ~AbstractLayouterDecorator();
+  AbstractLayoutProxy();
+  virtual ~AbstractLayoutProxy();
 
   void layout(Node* rootNode);
 

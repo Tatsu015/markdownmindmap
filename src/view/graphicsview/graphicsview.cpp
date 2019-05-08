@@ -1,4 +1,5 @@
 #include "graphicsview.h"
+#include "model/graphics/scene.h"
 #include <QKeyEvent>
 #include <QMouseEvent>
 #include <QTimeLine>
@@ -56,6 +57,10 @@ void GraphicsView::keyReleaseEvent(QKeyEvent* event) {
   }
 
   QGraphicsView::keyReleaseEvent(event);
+}
+
+Scene* GraphicsView::customScene() const {
+  return dynamic_cast<Scene*>(scene());
 }
 
 void GraphicsView::onScalingTime(qreal x) {
