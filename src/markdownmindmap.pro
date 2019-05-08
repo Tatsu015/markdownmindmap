@@ -35,6 +35,7 @@ SOURCES += \
     model/document.cpp \
     view/action/abstractaction.cpp \
     view/action/exitaction.cpp \
+    view/action/newaction.cpp \
     view/action/openaction.cpp \
     view/action/saveaction.cpp \
     view/codeeditor/codeeditor.cpp \
@@ -54,6 +55,7 @@ HEADERS += \
     model/document.h \
     view/action/abstractaction.h \
     view/action/exitaction.h \
+    view/action/newaction.h \
     view/action/openaction.h \
     view/action/saveaction.h \
     view/codeeditor/codeeditor.h \

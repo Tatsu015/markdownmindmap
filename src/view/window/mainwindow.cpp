@@ -7,6 +7,7 @@
 #include "model/graphics/scene.h"
 #include "ui_mainwindow.h"
 #include "view/action/exitaction.h"
+#include "view/action/newaction.h"
 #include "view/action/openaction.h"
 #include "view/action/saveaction.h"
 #include <QDebug>
@@ -35,6 +36,7 @@ void MainWindow::setupScene() {
 
 void MainWindow::setupMenu() {
   QMenu* fileMenu = new QMenu("File");
+  setupAction(fileMenu, new NewAction());
   setupAction(fileMenu, new OpenAction());
   setupAction(fileMenu, new SaveAction());
   setupAction(fileMenu, new ExitAction());
