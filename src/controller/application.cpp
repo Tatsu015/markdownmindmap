@@ -1,8 +1,19 @@
 #include "application.h"
+#include "utility/systemconfig.h"
+
+const static QString SYSTEM_CONFIG_FILE = "../conf/system.conf";
 
 Application* Application::getInstance() {
   static Application s;
   return &s;
+}
+
+void Application::setUp() {
+  SystemConfig::getInstance()->loadSystemConfig(SYSTEM_CONFIG_FILE);
+}
+
+void Application::tearDown() {
+  SystemConfig::getInstance()->saveSystemConfig(SYSTEM_CONFIG_FILE);
 }
 
 Document* Application::document() const {

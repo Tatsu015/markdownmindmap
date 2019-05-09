@@ -1,4 +1,5 @@
 #include "graphicsview.h"
+#include "utility/systemconfig.h"
 #include "viewmodel/scene/scene.h"
 #include <QKeyEvent>
 #include <QMouseEvent>
@@ -13,6 +14,8 @@ GraphicsView::GraphicsView(QWidget* parent)
   setDragMode(RubberBandDrag);
   qreal initScale = 1;
   scale(initScale, initScale);
+  setBackgroundBrush(
+      QBrush(QColor(SystemConfig::getInstance()->systemConfig(SystemConfig::CONF_BACKGROUND_COLOR).toString())));
 }
 
 GraphicsView::~GraphicsView() {

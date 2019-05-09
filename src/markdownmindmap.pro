@@ -41,7 +41,8 @@ SOURCES += \
     viewmodel/scene/layoutproxy/abstractlayoutproxy.cpp \
     viewmodel/scene/layoutproxy/lefttorighttreelayoutproxy.cpp \
     viewmodel/scene/scene.cpp \
-    main.cpp
+    main.cpp \
+    utility/systemconfig.cpp
 
 HEADERS += \
     controller/application.h \
@@ -59,7 +60,8 @@ HEADERS += \
     viewmodel/parser/markdownparser.h \
     viewmodel/scene/layoutproxy/abstractlayoutproxy.h \
     viewmodel/scene/layoutproxy/lefttorighttreelayoutproxy.h \
-    viewmodel/scene/scene.h
+    viewmodel/scene/scene.h \
+    utility/systemconfig.h
 
 FORMS += \
     view/window/mainwindow.ui

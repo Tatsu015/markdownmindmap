@@ -1,11 +1,12 @@
 #include "node.h"
 #include "connection.h"
+#include "utility/systemconfig.h"
 #include <QDebug>
 #include <QPen>
 
 Node::Node(const QString& text, uint32_t depth, QGraphicsItem* parent)
     : QGraphicsSimpleTextItem(text, parent), m_depth(depth), m_connection(new Connection(this)) {
-  setPen(QPen(Qt::white));
+  setPen(QPen(QColor(SystemConfig::getInstance()->systemConfig(SystemConfig::CONF_TEXT_COLOR).toString())));
 }
 
 Node::~Node() {

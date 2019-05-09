@@ -9,6 +9,8 @@ class MainWindow;
 class Application {
 public:
   static Application* getInstance();
+  void setUp();
+  void tearDown();
 
   Document* document() const;
   void setDocument(Document* document);

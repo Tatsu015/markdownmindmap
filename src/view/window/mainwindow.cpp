@@ -14,6 +14,7 @@
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), m_ui(new Ui::MainWindow), m_scene(new Scene()) {
   m_ui->setupUi(this);
 
+  Application::getInstance()->setUp();
   Document* doc = new Document();
   Application::getInstance()->setDocument(doc);
   m_ui->textEdit->setDocument(doc);
@@ -25,6 +26,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), m_ui(new Ui::Main
 }
 
 MainWindow::~MainWindow() {
+  Application::getInstance()->tearDown();
   delete m_ui;
 }
 
