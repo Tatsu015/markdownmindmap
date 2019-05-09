@@ -1,7 +1,8 @@
 #include "scene.h"
-#include "model/graphics/node.h"
-#include "model/graphics/proxy/abstractlayoutproxy.h"
-#include "model/graphics/proxy/lefttorighttreelayoutproxy.h"
+#include "viewmodel/graphicsitem/node.h"
+#include "viewmodel/parser/markdownparser.h"
+#include "viewmodel/scene/layoutproxy/abstractlayoutproxy.h"
+#include "viewmodel/scene/layoutproxy/lefttorighttreelayoutproxy.h"
 
 Scene::Scene() : QGraphicsScene() {
   addLayouterDecorator(new LeftToRightTreeLayoutProxy());
@@ -9,6 +10,19 @@ Scene::Scene() : QGraphicsScene() {
 }
 
 Scene::~Scene() {
+}
+
+void Scene::addMindMapTree(const QString& data) {
+  MarkdownParser parser;
+  Node* rootNode = parser.parse(data);
+
+  if (!rootNode) {
+    return;
+  }
+
+  m_activeLayoutProxy->layout(rootNode);
+  clear();
+  addItem(rootNode);
 }
 
 void Scene::addNodeItem(Node* rootNode) {

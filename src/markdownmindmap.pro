@@ -25,13 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-    controller/parser/markdownparser.cpp \
     controller/application.cpp \
-    model/graphics/proxy/abstractlayoutproxy.cpp \
-    model/graphics/proxy/lefttorighttreelayoutproxy.cpp \
-    model/graphics/connection.cpp \
-    model/graphics/node.cpp \
-    model/graphics/scene.cpp \
     model/document.cpp \
     view/action/abstractaction.cpp \
     view/action/exitaction.cpp \
@@ -41,17 +35,16 @@ SOURCES += \
     view/codeeditor/codeeditor.cpp \
     view/graphicsview/graphicsview.cpp \
     view/window/mainwindow.cpp \
+    viewmodel/graphicsitem/connection.cpp \
+    viewmodel/graphicsitem/node.cpp \
+    viewmodel/parser/markdownparser.cpp \
+    viewmodel/scene/layoutproxy/abstractlayoutproxy.cpp \
+    viewmodel/scene/layoutproxy/lefttorighttreelayoutproxy.cpp \
+    viewmodel/scene/scene.cpp \
     main.cpp
 
-
 HEADERS += \
-    controller/parser/markdownparser.h \
     controller/application.h \
-    model/graphics/proxy/abstractlayoutproxy.h \
-    model/graphics/proxy/lefttorighttreelayoutproxy.h \
-    model/graphics/connection.h \
-    model/graphics/node.h \
-    model/graphics/scene.h \
     model/document.h \
     view/action/abstractaction.h \
     view/action/exitaction.h \
@@ -60,8 +53,13 @@ HEADERS += \
     view/action/saveaction.h \
     view/codeeditor/codeeditor.h \
     view/graphicsview/graphicsview.h \
-    view/window/mainwindow.h
-
+    view/window/mainwindow.h \
+    viewmodel/graphicsitem/connection.h \
+    viewmodel/graphicsitem/node.h \
+    viewmodel/parser/markdownparser.h \
+    viewmodel/scene/layoutproxy/abstractlayoutproxy.h \
+    viewmodel/scene/layoutproxy/lefttorighttreelayoutproxy.h \
+    viewmodel/scene/scene.h
 
 FORMS += \
     view/window/mainwindow.ui

@@ -6,17 +6,15 @@ class Node;
 
 class MarkdownParser {
 public:
-  static MarkdownParser* getInstance();
+  MarkdownParser();
+  ~MarkdownParser();
   Node* parse(const QString& data);
 
 private:
-  QStringList removeComment(const QString& data);
-  bool hasError(QStringList validLines);
+  QStringList toValidLines(const QString& data);
+  bool hasRootNode(QString rootLine);
+  bool hasMonoRootNode(QStringList validLines);
   uint32_t indentCount(const QString& oneLine);
-
-private:
-  MarkdownParser();
-  ~MarkdownParser();
 };
 
 #endif // MARKDOWNPARSER_H

@@ -1,11 +1,10 @@
 #include "saveaction.h"
 #include "controller/application.h"
 #include "controller/application.h"
-#include "controller/parser/markdownparser.h"
 #include "model/document.h"
-#include "model/graphics/node.h"
-#include "model/graphics/scene.h"
 #include "ui_mainwindow.h"
+#include "viewmodel/graphicsitem/node.h"
+#include "viewmodel/scene/scene.h"
 #include <QAction>
 #include <QFile>
 #include <QFileDialog>
@@ -21,12 +20,10 @@ SaveAction::~SaveAction() {
 }
 
 void SaveAction::execute() {
-  const QString editedData = Application::getInstance()->document()->toPlainText();
-
   // TODO more consider...
-  Node* rootNode = MarkdownParser::getInstance()->parse(editedData);
+  const QString editedData = Application::getInstance()->document()->toPlainText();
   Scene* scene = Application::getInstance()->ui()->graphicsView->customScene();
-  scene->addNodeItem(rootNode);
+  scene->addMindMapTree(editedData);
 
   QString filePath;
   if (Application::getInstance()->document()->filePath().isEmpty()) {

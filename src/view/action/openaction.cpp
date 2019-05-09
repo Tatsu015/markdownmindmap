@@ -1,10 +1,9 @@
 #include "openaction.h"
 #include "controller/application.h"
-#include "controller/parser/markdownparser.h"
 #include "model/document.h"
-#include "model/graphics/node.h"
-#include "model/graphics/scene.h"
 #include "ui_mainwindow.h"
+#include "viewmodel/graphicsitem/node.h"
+#include "viewmodel/scene/scene.h"
 #include <QAction>
 #include <QFile>
 #include <QFileDialog>
@@ -34,9 +33,9 @@ void OpenAction::execute() {
   Application::getInstance()->ui()->textEdit->setText(readData);
 
   // TODO more consider...
-  Node* rootNode = MarkdownParser::getInstance()->parse(readData);
+  const QString editedData = Application::getInstance()->document()->toPlainText();
   Scene* scene = Application::getInstance()->ui()->graphicsView->customScene();
-  scene->addNodeItem(rootNode);
+  scene->addMindMapTree(editedData);
 
   f.close();
 }

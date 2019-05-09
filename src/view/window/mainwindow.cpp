@@ -1,15 +1,13 @@
 #include "mainwindow.h"
 #include "controller/application.h"
-#include "controller/parser/markdownparser.h"
 #include "model/document.h"
-#include "model/graphics/node.h"
-#include "model/graphics/proxy/lefttorighttreelayoutproxy.h"
-#include "model/graphics/scene.h"
 #include "ui_mainwindow.h"
 #include "view/action/exitaction.h"
 #include "view/action/newaction.h"
 #include "view/action/openaction.h"
 #include "view/action/saveaction.h"
+#include "viewmodel/graphicsitem/node.h"
+#include "viewmodel/scene/scene.h"
 #include <QDebug>
 #include <QKeyEvent>
 

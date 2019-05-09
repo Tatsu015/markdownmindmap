@@ -1,6 +1,6 @@
 #include "lefttorighttreelayoutproxy.h"
-#include "model/graphics/connection.h"
-#include "model/graphics/node.h"
+#include "viewmodel/graphicsitem/connection.h"
+#include "viewmodel/graphicsitem/node.h"
 #include <QDebug>
 #include <QRectF>
 

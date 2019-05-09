@@ -1,5 +1,5 @@
 #include "graphicsview.h"
-#include "model/graphics/scene.h"
+#include "viewmodel/scene/scene.h"
 #include <QKeyEvent>
 #include <QMouseEvent>
 #include <QTimeLine>

@@ -1,30 +1,38 @@
 #include "markdownparser.h"
-#include "model/graphics/node.h"
+#include "viewmodel/graphicsitem/node.h"
 #include <QDebug>
 
-const static QString COMMENT_KEYWORD = "#";
 const static QChar INDENT_KEYWORD = ' ';
 const static QString RETURN_CODE = "\n";
 
-MarkdownParser* MarkdownParser::getInstance() {
-  static MarkdownParser s;
-  return &s;
+MarkdownParser::MarkdownParser() {
+}
+
+MarkdownParser::~MarkdownParser() {
 }
 
 Node* MarkdownParser::parse(const QString& data) {
-  QStringList validLines = removeComment(data);
+  QStringList validLines = toValidLines(data);
 
-  if (hasError(validLines)) {
+  if (validLines.isEmpty()) {
     return nullptr;
   }
 
   QString rootLine = validLines.takeFirst();
+  QStringList childLines = validLines;
+
+  if (!hasRootNode(rootLine)) {
+    return nullptr;
+  }
+  if (!hasMonoRootNode(childLines)) {
+    return nullptr;
+  }
 
   Node* rootNode = new Node(rootLine, 0);
   Node* lastNode = rootNode;
   Node* currentNode = nullptr;
 
-  foreach (QString validLine, validLines) {
+  foreach (QString validLine, childLines) {
     uint32_t depth = indentCount(validLine);
     QString text = validLine.simplified();
     currentNode = new Node(text, depth);
@@ -45,40 +53,33 @@ Node* MarkdownParser::parse(const QString& data) {
   return rootNode;
 }
 
-QStringList MarkdownParser::removeComment(const QString& data) {
+QStringList MarkdownParser::toValidLines(const QString& data) {
   QStringList validLines;
   foreach (QString line, data.split(RETURN_CODE, QString::SkipEmptyParts)) {
-    // skip commentout, empty only blank line
-    if (!line.contains(COMMENT_KEYWORD)) {
-      if (!line.simplified().isEmpty()) {
-        validLines << line;
-      }
+    // skip only blank line
+    if (!line.simplified().isEmpty()) {
+      validLines << line;
     }
   }
   return validLines;
 }
 
-bool MarkdownParser::hasError(QStringList validLines) {
-  if (validLines.isEmpty()) {
-    qDebug() << "ERROR! any data exist!";
-    return true;
-  }
-
-  QString rootLine = validLines.takeFirst();
+bool MarkdownParser::hasRootNode(QString rootLine) {
   uint32_t rootIndent = indentCount(rootLine);
-  if (0 != rootIndent) {
-    qDebug() << "ERROR! no root item exist!";
+  if (0 == rootIndent) {
     return true;
   }
+  return false;
+}
 
+bool MarkdownParser::hasMonoRootNode(QStringList validLines) {
   foreach (QString validLine, validLines) {
     uint32_t depth = indentCount(validLine);
     if (0 == depth) {
-      qDebug() << "Error! two or more root data exist!";
-      return true;
+      return false;
     }
   }
-  return false;
+  return true;
 }
 
 uint32_t MarkdownParser::indentCount(const QString& oneLine) {
@@ -90,10 +91,4 @@ uint32_t MarkdownParser::indentCount(const QString& oneLine) {
     ++count;
   }
   return count;
-}
-
-MarkdownParser::MarkdownParser() {
-}
-
-MarkdownParser::~MarkdownParser() {
 }

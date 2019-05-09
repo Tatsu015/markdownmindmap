@@ -12,6 +12,7 @@ public:
   Scene();
   virtual ~Scene();
 
+  void addMindMapTree(const QString& data);
   void addNodeItem(Node* rootNode);
 
 private:

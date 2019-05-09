@@ -1,11 +1,10 @@
 #include "codeeditor.h"
 #include "controller/application.h"
-#include "controller/parser/markdownparser.h"
 #include "model/document.h"
-#include "model/graphics/node.h"
-#include "model/graphics/scene.h"
 #include "ui_mainwindow.h"
 #include "view/graphicsview/graphicsview.h"
+#include "viewmodel/graphicsitem/node.h"
+#include "viewmodel/scene/scene.h"
 #include <QDebug>
 #include <QTimer>
 
@@ -24,9 +23,8 @@ void CodeEditor::onStartTimer() {
 }
 
 void CodeEditor::onUpdateModel() {
-  Node* rootNode = MarkdownParser::getInstance()->parse(toPlainText());
   Scene* scene = Application::getInstance()->ui()->graphicsView->customScene();
-  scene->addNodeItem(rootNode);
+  scene->addMindMapTree(toPlainText());
 
   m_timer->stop();
 }
