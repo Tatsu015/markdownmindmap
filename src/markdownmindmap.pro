@@ -43,6 +43,7 @@ SOURCES += \
     viewmodel/parser/markdownparser.cpp \
     viewmodel/scene/layoutproxy/abstractlayoutproxy.cpp \
     viewmodel/scene/layoutproxy/lefttorighttreelayoutproxy.cpp \
+    viewmodel/scene/layoutproxy/toptobottomtreelayoutproxy.cpp \
     viewmodel/scene/scene.cpp \
     main.cpp \
     utility/systemconfig.cpp
@@ -66,6 +67,7 @@ HEADERS += \
     viewmodel/parser/markdownparser.h \
     viewmodel/scene/layoutproxy/abstractlayoutproxy.h \
     viewmodel/scene/layoutproxy/lefttorighttreelayoutproxy.h \
+    viewmodel/scene/layoutproxy/toptobottomtreelayoutproxy.h \
     viewmodel/scene/scene.h \
     utility/systemconfig.h
 

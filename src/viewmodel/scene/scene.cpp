@@ -4,11 +4,13 @@
 #include "viewmodel/parser/markdownparser.h"
 #include "viewmodel/scene/layoutproxy/abstractlayoutproxy.h"
 #include "viewmodel/scene/layoutproxy/lefttorighttreelayoutproxy.h"
+#include "viewmodel/scene/layoutproxy/toptobottomtreelayoutproxy.h"
 #include <QTimer>
 
 Scene::Scene(Document* document) : QGraphicsScene(), m_document(document) {
   addLayouterDecorator(new LeftToRightTreeLayoutProxy());
-  m_activeLayoutProxy = m_layoutProxies.first();
+  addLayouterDecorator(new TopToBottomTreeLayoutProxy());
+  m_activeLayoutProxy = m_layoutProxies.last();
 
   m_timer = new QTimer();
   connect(m_document, &Document::contentsChanged, this, &Scene::onStartTimer);

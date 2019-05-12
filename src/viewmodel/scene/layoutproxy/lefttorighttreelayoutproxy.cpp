@@ -6,6 +6,8 @@
 
 const qreal CHILD_TO_PARENT_SPACE = 36;
 const qreal CHILD_TO_CHILD_SPACE = 6;
+const QPointF OFFSET(10, 0);
+const QPointF CUBIC_POINT(10, 0);
 
 const QString LeftToRightTreeLayoutProxy::NAME = "Left To Right";
 
@@ -31,10 +33,9 @@ qreal LeftToRightTreeLayoutProxy::layoutChild(Node* node) {
     const qreal th = layoutChild(childNode);
     childNode->setPos(x, y + th / 2 - childNode->boundingRect().center().y());
     QPointF parentToChild = node->scenePos() - childNode->scenePos();
-    QPointF offset(10, 0);
-    QPointF parentPos = parentToChild + node->rightCenter() + offset;
-    QPointF childPos = childNode->leftCenter() - offset;
-    childNode->connection()->draw(parentPos, childPos);
+    QPointF parentPos = parentToChild + node->rightCenter() + OFFSET;
+    QPointF childPos = childNode->leftCenter() - OFFSET;
+    childNode->connection()->draw(parentPos, childPos, CUBIC_POINT);
     y += th + CHILD_TO_CHILD_SPACE;
   }
   return qMax(childHeight, br.height());

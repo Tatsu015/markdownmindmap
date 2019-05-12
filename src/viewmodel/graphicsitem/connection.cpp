@@ -10,10 +10,9 @@ Connection::Connection(QGraphicsItem* parent) : QGraphicsPathItem(parent) {
 Connection::~Connection() {
 }
 
-void Connection::draw(const QPointF& pos1, const QPointF& pos2) {
+void Connection::draw(const QPointF& pos1, const QPointF& pos2, const QPointF& cubicPoint) {
   QPainterPath p;
-  QPointF offset(10, 0);
   p.moveTo(pos1);
-  p.cubicTo(pos1 + offset, pos2 - offset, pos2);
+  p.cubicTo(pos1 + cubicPoint, pos2 - cubicPoint, pos2);
   setPath(p);
 }
