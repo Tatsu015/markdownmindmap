@@ -5,7 +5,7 @@
 #include <QRectF>
 
 const qreal CHILD_TO_PARENT_SPACE = 36;
-const qreal CHILD_TO_CHILD_SPACE = 2;
+const qreal CHILD_TO_CHILD_SPACE = 6;
 
 const QString LeftToRightTreeLayoutProxy::NAME = "Left To Right";
 
@@ -29,7 +29,7 @@ qreal LeftToRightTreeLayoutProxy::layoutChild(Node* node) {
   qreal y = br.center().y() - childHeight / 2;
   foreach (Node* childNode, node->childNodes()) {
     const qreal th = layoutChild(childNode);
-    childNode->setPos(x, y * th / 2 - childNode->boundingRect().center().y());
+    childNode->setPos(x, y + th / 2 - childNode->boundingRect().center().y());
     QPointF parentToChild = node->scenePos() - childNode->scenePos();
     QPointF offset(10, 0);
     QPointF parentPos = parentToChild + node->rightCenter() + offset;
