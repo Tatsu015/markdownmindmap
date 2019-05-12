@@ -4,9 +4,10 @@
 #include "abstractlayoutproxy.h"
 #include <QString>
 
-const static QString LEFT_TO_RIGHT_TREE_LAYOUT_DECOLATOR = "LeftToRightTreeLayoutDecorator";
-
 class LeftToRightTreeLayoutProxy : public AbstractLayoutProxy {
+public:
+  const static QString NAME;
+
 public:
   LeftToRightTreeLayoutProxy();
   virtual ~LeftToRightTreeLayoutProxy();

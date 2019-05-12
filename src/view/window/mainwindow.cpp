@@ -3,6 +3,7 @@
 #include "model/document.h"
 #include "ui_mainwindow.h"
 #include "utility/systemconfig.h"
+#include "view/action/changelefttorightlayoutaction.h"
 #include "view/action/exitaction.h"
 #include "view/action/exportpngaction.h"
 #include "view/action/newaction.h"
@@ -51,6 +52,12 @@ void MainWindow::setupMenu() {
   QMenu* toolMenu = new QMenu("Tool");
   m_ui->menuBar->addMenu(toolMenu);
   setupAction(toolMenu, new ExportPngAction());
+
+  QMenu* viewMenu = new QMenu("View");
+  m_ui->menuBar->addMenu(viewMenu);
+  QMenu* treeLayout = new QMenu("Tree Layout");
+  viewMenu->addMenu(treeLayout);
+  setupAction(treeLayout, new ChangeLeftToRightLayoutAction());
 }
 
 void MainWindow::setupStyleSheet() {

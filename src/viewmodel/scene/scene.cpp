@@ -37,6 +37,7 @@ void Scene::addLayouterDecorator(AbstractLayoutProxy* layoutDecolator) {
 
 void Scene::changeActiveLayoutDecolator(const QString& name) {
   m_activeLayoutProxy = m_layoutProxies[name];
+  updateMindMap();
 }
 
 void Scene::onStartTimer() {

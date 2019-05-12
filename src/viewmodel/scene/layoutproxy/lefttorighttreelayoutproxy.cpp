@@ -7,6 +7,8 @@
 const qreal CHILD_TO_PARENT_SPACE = 36;
 const qreal CHILD_TO_CHILD_SPACE = 2;
 
+const QString LeftToRightTreeLayoutProxy::NAME = "Left To Right";
+
 LeftToRightTreeLayoutProxy::LeftToRightTreeLayoutProxy() : AbstractLayoutProxy() {
 }
 
@@ -14,7 +16,7 @@ LeftToRightTreeLayoutProxy::~LeftToRightTreeLayoutProxy() {
 }
 
 QString LeftToRightTreeLayoutProxy::name() const {
-  return LEFT_TO_RIGHT_TREE_LAYOUT_DECOLATOR;
+  return NAME;
 }
 
 qreal LeftToRightTreeLayoutProxy::layoutChild(Node* node) {

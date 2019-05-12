@@ -34,6 +34,7 @@ SOURCES += \
     view/action/saveaction.cpp \
     view/action/saveasaction.cpp \
     view/action/exportpngaction.cpp \
+    view/action/changelefttorightlayoutaction.cpp \
     view/codeeditor/codeeditor.cpp \
     view/graphicsview/graphicsview.cpp \
     view/window/mainwindow.cpp \
@@ -55,6 +56,7 @@ HEADERS += \
     view/action/openaction.h \
     view/action/saveaction.h \
     view/action/saveasaction.h \
+    view/action/changelefttorightlayoutaction.h \
     view/action/exportpngaction.h \
     view/codeeditor/codeeditor.h \
     view/graphicsview/graphicsview.h \

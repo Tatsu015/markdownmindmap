@@ -4,10 +4,10 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 
-static QJsonObject m_config;
+static QJsonObject m_systemConfig;
 
 QVariant systemConfig(const QString& name) {
-  return m_config.value(name).toVariant();
+  return m_systemConfig.value(name).toVariant();
 }
 
 void loadSystemConfig(const QString& filePath) {
@@ -18,8 +18,8 @@ void loadSystemConfig(const QString& filePath) {
   }
 
   QByteArray saveData = file.readAll();
-  m_config = QJsonDocument::fromJson(saveData).object();
-  qDebug() << m_config;
+  m_systemConfig = QJsonDocument::fromJson(saveData).object();
+  qDebug() << m_systemConfig;
   file.close();
 }
 
@@ -30,7 +30,7 @@ void saveSystemConfig(const QString& filePath) {
     file.close();
   }
 
-  QJsonDocument saveDocument(m_config);
+  QJsonDocument saveDocument(m_systemConfig);
   QTextStream out(&file);
   out << saveDocument.toJson();
   file.close();

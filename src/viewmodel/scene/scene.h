@@ -13,10 +13,11 @@ public:
   Scene(Document* document);
   virtual ~Scene();
 
+  void changeActiveLayoutDecolator(const QString& name);
+
 private:
   void updateMindMap();
   void addLayouterDecorator(AbstractLayoutProxy* layoutDecolator);
-  void changeActiveLayoutDecolator(const QString& name);
 
 private slots:
   void onStartTimer();
