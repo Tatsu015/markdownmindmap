@@ -4,6 +4,7 @@
 #include "ui_mainwindow.h"
 #include "utility/systemconfig.h"
 #include "view/action/exitaction.h"
+#include "view/action/exportpngaction.h"
 #include "view/action/newaction.h"
 #include "view/action/openaction.h"
 #include "view/action/saveaction.h"
@@ -40,18 +41,20 @@ void MainWindow::setupScene() {
 
 void MainWindow::setupMenu() {
   QMenu* fileMenu = new QMenu("File");
+  m_ui->menuBar->addMenu(fileMenu);
   setupAction(fileMenu, new NewAction());
   setupAction(fileMenu, new OpenAction());
   setupAction(fileMenu, new SaveAction());
   setupAction(fileMenu, new SaveAsAction());
   setupAction(fileMenu, new ExitAction());
 
-  m_ui->menuBar->addMenu(fileMenu);
+  QMenu* toolMenu = new QMenu("Tool");
+  m_ui->menuBar->addMenu(toolMenu);
+  setupAction(toolMenu, new ExportPngAction());
 }
 
 void MainWindow::setupStyleSheet() {
-  const QString styleSheetPath =
-      SystemConfig::getInstance()->systemConfig(SystemConfig::CONF_STYLESHEET_FILE_PATH).toString();
+  const QString styleSheetPath = systemConfig(SystemConfig::styleSheetPath).toString();
   QFile file(styleSheetPath);
   if (file.open(QIODevice::ReadOnly)) {
     qApp->setStyleSheet(file.readAll());
