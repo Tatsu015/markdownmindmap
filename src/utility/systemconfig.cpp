@@ -5,6 +5,7 @@
 
 const QString SystemConfig::CONF_TEXT_COLOR = "textColor";
 const QString SystemConfig::CONF_BACKGROUND_COLOR = "backgroundColor";
+const QString SystemConfig::CONF_STYLESHEET_FILE_PATH = "styleSheetPath";
 
 SystemConfig* SystemConfig::getInstance() {
   static SystemConfig s;

@@ -9,6 +9,7 @@ class SystemConfig {
 public:
   const static QString CONF_TEXT_COLOR;
   const static QString CONF_BACKGROUND_COLOR;
+  const static QString CONF_STYLESHEET_FILE_PATH;
 
 public:
   static SystemConfig* getInstance();

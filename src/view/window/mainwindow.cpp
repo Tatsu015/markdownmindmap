@@ -2,6 +2,7 @@
 #include "controller/application.h"
 #include "model/document.h"
 #include "ui_mainwindow.h"
+#include "utility/systemconfig.h"
 #include "view/action/exitaction.h"
 #include "view/action/newaction.h"
 #include "view/action/openaction.h"
@@ -11,14 +12,17 @@
 #include <QDebug>
 #include <QKeyEvent>
 
-MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), m_ui(new Ui::MainWindow), m_scene(new Scene()) {
+MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), m_ui(new Ui::MainWindow) {
+  Application::getInstance()->setUp();
+
   m_ui->setupUi(this);
 
-  Application::getInstance()->setUp();
   Document* doc = new Document();
+  m_scene = new Scene(doc);
   Application::getInstance()->setDocument(doc);
   m_ui->textEdit->setDocument(doc);
   Application::getInstance()->setUi(m_ui);
+  m_ui->graphicsView->setScene(m_scene);
 
   setupScene();
   setupMenu();
@@ -31,7 +35,6 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::setupScene() {
-  m_ui->graphicsView->setScene(m_scene);
 }
 
 void MainWindow::setupMenu() {
@@ -45,7 +48,9 @@ void MainWindow::setupMenu() {
 }
 
 void MainWindow::setupStyleSheet() {
-  QFile file("../resource/stylesheet/DarkAndBlue.css");
+  const QString styleSheetPath =
+      SystemConfig::getInstance()->systemConfig(SystemConfig::CONF_STYLESHEET_FILE_PATH).toString();
+  QFile file(styleSheetPath);
   if (file.open(QIODevice::ReadOnly)) {
     qApp->setStyleSheet(file.readAll());
   }

@@ -1,31 +1,31 @@
 #include "scene.h"
+#include "model/document.h"
 #include "viewmodel/graphicsitem/node.h"
 #include "viewmodel/parser/markdownparser.h"
 #include "viewmodel/scene/layoutproxy/abstractlayoutproxy.h"
 #include "viewmodel/scene/layoutproxy/lefttorighttreelayoutproxy.h"
+#include <QTimer>
 
-Scene::Scene() : QGraphicsScene() {
+Scene::Scene(Document* document) : QGraphicsScene(), m_document(document) {
   addLayouterDecorator(new LeftToRightTreeLayoutProxy());
   m_activeLayoutProxy = m_layoutProxies.first();
+
+  m_timer = new QTimer();
+  connect(m_document, &Document::contentsChanged, this, &Scene::onStartTimer);
+  connect(m_timer, &QTimer::timeout, this, &Scene::onUpdateMindMap);
 }
 
 Scene::~Scene() {
 }
 
-void Scene::addMindMapTree(const QString& data) {
+void Scene::updateMindMap() {
   MarkdownParser parser;
-  Node* rootNode = parser.parse(data);
+  Node* rootNode = parser.parse(m_document->toPlainText());
 
   if (!rootNode) {
     return;
   }
 
-  m_activeLayoutProxy->layout(rootNode);
-  clear();
-  addItem(rootNode);
-}
-
-void Scene::addNodeItem(Node* rootNode) {
   m_activeLayoutProxy->layout(rootNode);
   clear();
   addItem(rootNode);
@@ -37,4 +37,14 @@ void Scene::addLayouterDecorator(AbstractLayoutProxy* layoutDecolator) {
 
 void Scene::changeActiveLayoutDecolator(const QString& name) {
   m_activeLayoutProxy = m_layoutProxies[name];
+}
+
+void Scene::onStartTimer() {
+  m_timer->stop();
+  m_timer->start(300);
+}
+
+void Scene::onUpdateMindMap() {
+  updateMindMap();
+  m_timer->stop();
 }

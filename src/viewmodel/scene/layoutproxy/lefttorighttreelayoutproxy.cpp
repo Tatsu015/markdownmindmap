@@ -5,7 +5,7 @@
 #include <QRectF>
 
 const qreal CHILD_TO_PARENT_SPACE = 36;
-const qreal CHILD_TO_CHILD_SPACE = -5; // TODO why minus???
+const qreal CHILD_TO_CHILD_SPACE = 0;
 
 LeftToRightTreeLayoutProxy::LeftToRightTreeLayoutProxy() : AbstractLayoutProxy() {
 }

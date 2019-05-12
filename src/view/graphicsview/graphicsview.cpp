@@ -12,10 +12,12 @@ GraphicsView::GraphicsView(QWidget* parent)
   setAlignment(Qt::AlignCenter);
   setMouseTracking(true);
   setDragMode(RubberBandDrag);
+
   qreal initScale = 1;
   scale(initScale, initScale);
-  setBackgroundBrush(
-      QBrush(QColor(SystemConfig::getInstance()->systemConfig(SystemConfig::CONF_BACKGROUND_COLOR).toString())));
+
+  QColor color = SystemConfig::getInstance()->systemConfig(SystemConfig::CONF_BACKGROUND_COLOR).value<QColor>();
+  setBackgroundBrush(QBrush(color));
 }
 
 GraphicsView::~GraphicsView() {

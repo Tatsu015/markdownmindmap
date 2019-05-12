@@ -3,8 +3,6 @@
 #include "controller/application.h"
 #include "model/document.h"
 #include "ui_mainwindow.h"
-#include "viewmodel/graphicsitem/node.h"
-#include "viewmodel/scene/scene.h"
 #include <QAction>
 #include <QFile>
 #include <QFileDialog>
@@ -20,10 +18,7 @@ SaveAction::~SaveAction() {
 }
 
 void SaveAction::execute() {
-  // TODO more consider...
-  const QString editedData = Application::getInstance()->document()->toPlainText();
-  Scene* scene = Application::getInstance()->ui()->graphicsView->customScene();
-  scene->addMindMapTree(editedData);
+  emit Application::getInstance()->document()->contentsChanged();
 
   QString filePath;
   if (Application::getInstance()->document()->filePath().isEmpty()) {
@@ -40,6 +35,6 @@ void SaveAction::execute() {
   Application::getInstance()->document()->setFilePath(filePath);
   QTextStream out(&f);
   out.setCodec("UTF-8");
-  out << editedData;
+  out << Application::getInstance()->document()->toPlainText();
   f.close();
 }

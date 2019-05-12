@@ -2,8 +2,6 @@
 #include "controller/application.h"
 #include "model/document.h"
 #include "ui_mainwindow.h"
-#include "viewmodel/graphicsitem/node.h"
-#include "viewmodel/scene/scene.h"
 #include <QAction>
 #include <QFile>
 #include <QFileDialog>
@@ -20,9 +18,7 @@ NewAction::~NewAction() {
 }
 
 void NewAction::execute() {
-  const QString editedData = Application::getInstance()->document()->toPlainText();
-  Scene* scene = Application::getInstance()->ui()->graphicsView->customScene();
-  scene->addMindMapTree(editedData);
+  emit Application::getInstance()->document()->contentsChanged();
 
   QString projectPath;
   if (Application::getInstance()->document()->filePath().isEmpty()) {
@@ -41,7 +37,7 @@ void NewAction::execute() {
   }
   QTextStream out(&f);
   out.setCodec("UTF-8");
-  out << editedData;
+  out << Application::getInstance()->document()->toPlainText();
   f.close();
 
   Application::getInstance()->document()->setPlainText("");
