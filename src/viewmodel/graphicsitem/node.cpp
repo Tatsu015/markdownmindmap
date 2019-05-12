@@ -6,7 +6,7 @@
 
 Node::Node(const QString& text, uint32_t depth, QGraphicsItem* parent)
     : QGraphicsSimpleTextItem(text, parent), m_depth(depth), m_connection(new Connection(this)) {
-  QColor color = SystemConfig::getInstance()->systemConfig(SystemConfig::CONF_TEXT_COLOR).value<QColor>();
+  QColor color = systemConfig(SystemConfig::textColor).value<QColor>();
   setPen(QPen(color));
 }
 

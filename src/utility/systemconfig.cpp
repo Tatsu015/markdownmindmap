@@ -2,21 +2,15 @@
 #include <QDebug>
 #include <QFile>
 #include <QJsonDocument>
+#include <QJsonObject>
 
-const QString SystemConfig::CONF_TEXT_COLOR = "textColor";
-const QString SystemConfig::CONF_BACKGROUND_COLOR = "backgroundColor";
-const QString SystemConfig::CONF_STYLESHEET_FILE_PATH = "styleSheetPath";
+static QJsonObject m_config;
 
-SystemConfig* SystemConfig::getInstance() {
-  static SystemConfig s;
-  return &s;
+QVariant systemConfig(const QString& name) {
+  return m_config.value(name).toVariant();
 }
 
-QVariant SystemConfig::systemConfig(const QString& key) {
-  return m_systemConfig.value(key).toVariant();
-}
-
-void SystemConfig::loadSystemConfig(const QString& filePath) {
+void loadSystemConfig(const QString& filePath) {
   QFile file(filePath);
   if (!file.open(QIODevice::ReadOnly)) {
     qDebug() << "Error! file read error!" << filePath;
@@ -24,26 +18,20 @@ void SystemConfig::loadSystemConfig(const QString& filePath) {
   }
 
   QByteArray saveData = file.readAll();
-  m_systemConfig = QJsonDocument::fromJson(saveData).object();
-  qDebug() << m_systemConfig;
+  m_config = QJsonDocument::fromJson(saveData).object();
+  qDebug() << m_config;
   file.close();
 }
 
-void SystemConfig::saveSystemConfig(const QString& filePath) {
+void saveSystemConfig(const QString& filePath) {
   QFile file(filePath);
   if (!file.open(QIODevice::WriteOnly)) {
     qDebug() << "Error! file write error!" << filePath;
     file.close();
   }
 
-  QJsonDocument saveDocument(m_systemConfig);
+  QJsonDocument saveDocument(m_config);
   QTextStream out(&file);
   out << saveDocument.toJson();
   file.close();
-}
-
-SystemConfig::SystemConfig() {
-}
-
-SystemConfig::~SystemConfig() {
 }

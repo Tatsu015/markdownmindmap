@@ -9,11 +9,11 @@ Application* Application::getInstance() {
 }
 
 void Application::setUp() {
-  SystemConfig::getInstance()->loadSystemConfig(SYSTEM_CONFIG_FILE);
+  loadSystemConfig(SYSTEM_CONFIG_FILE);
 }
 
 void Application::tearDown() {
-  SystemConfig::getInstance()->saveSystemConfig(SYSTEM_CONFIG_FILE);
+  saveSystemConfig(SYSTEM_CONFIG_FILE);
 }
 
 Document* Application::document() const {

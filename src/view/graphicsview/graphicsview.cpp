@@ -16,7 +16,7 @@ GraphicsView::GraphicsView(QWidget* parent)
   qreal initScale = 1;
   scale(initScale, initScale);
 
-  QColor color = SystemConfig::getInstance()->systemConfig(SystemConfig::CONF_BACKGROUND_COLOR).value<QColor>();
+  QColor color = systemConfig(SystemConfig::backgroundColor).value<QColor>();
   setBackgroundBrush(QBrush(color));
 }
 

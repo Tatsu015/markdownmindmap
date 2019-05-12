@@ -1,30 +1,20 @@
 #ifndef SYSTEMCONFIG_H
 #define SYSTEMCONFIG_H
 
-#include <QJsonObject>
-#include <QMap>
 #include <QVariant>
 
-class SystemConfig {
-public:
-  const static QString CONF_TEXT_COLOR;
-  const static QString CONF_BACKGROUND_COLOR;
-  const static QString CONF_STYLESHEET_FILE_PATH;
+#define DefineConfig(name) constexpr const char* name = #name
 
-public:
-  static SystemConfig* getInstance();
+namespace SystemConfig {
+DefineConfig(backgroundColor);
+DefineConfig(exportPngTransparent);
+DefineConfig(styleSheetPath);
+DefineConfig(textColor);
+}
 
-  QVariant systemConfig(const QString& key);
+QVariant systemConfig(const QString& name);
 
-  void loadSystemConfig(const QString& filePath);
-  void saveSystemConfig(const QString& filePath);
-
-private:
-  QJsonObject m_systemConfig;
-
-private:
-  SystemConfig();
-  ~SystemConfig();
-};
+void loadSystemConfig(const QString& filePath);
+void saveSystemConfig(const QString& filePath);
 
 #endif // SYSTEMCONFIG_H
