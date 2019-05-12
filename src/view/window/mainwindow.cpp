@@ -7,6 +7,7 @@
 #include "view/action/newaction.h"
 #include "view/action/openaction.h"
 #include "view/action/saveaction.h"
+#include "view/action/saveasaction.h"
 #include "viewmodel/graphicsitem/node.h"
 #include "viewmodel/scene/scene.h"
 #include <QDebug>
@@ -42,6 +43,7 @@ void MainWindow::setupMenu() {
   setupAction(fileMenu, new NewAction());
   setupAction(fileMenu, new OpenAction());
   setupAction(fileMenu, new SaveAction());
+  setupAction(fileMenu, new SaveAsAction());
   setupAction(fileMenu, new ExitAction());
 
   m_ui->menuBar->addMenu(fileMenu);

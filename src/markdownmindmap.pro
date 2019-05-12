@@ -32,6 +32,7 @@ SOURCES += \
     view/action/newaction.cpp \
     view/action/openaction.cpp \
     view/action/saveaction.cpp \
+    view/action/saveasaction.cpp \
     view/codeeditor/codeeditor.cpp \
     view/graphicsview/graphicsview.cpp \
     view/window/mainwindow.cpp \
@@ -52,6 +53,7 @@ HEADERS += \
     view/action/newaction.h \
     view/action/openaction.h \
     view/action/saveaction.h \
+    view/action/saveasaction.h \
     view/codeeditor/codeeditor.h \
     view/graphicsview/graphicsview.h \
     view/window/mainwindow.h \
