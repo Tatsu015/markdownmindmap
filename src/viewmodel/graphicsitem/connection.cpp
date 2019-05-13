@@ -3,7 +3,7 @@
 #include <QPen>
 
 Connection::Connection(QGraphicsItem* parent) : QGraphicsPathItem(parent) {
-  QColor color = systemConfig(SystemConfig::textColor).value<QColor>();
+  QColor color = systemConfig(SystemConfig::connectionColor).value<QColor>();
   setPen(QPen(color));
 }
 

@@ -1,4 +1,5 @@
 #include "lefttorighttreelayoutproxy.h"
+#include "utility/systemconfig.h"
 #include "viewmodel/graphicsitem/connection.h"
 #include "viewmodel/graphicsitem/node.h"
 #include <QDebug>
@@ -26,7 +27,7 @@ qreal LeftToRightTreeLayoutProxy::layoutChild(Node* node) {
   if (!node->hasChild()) {
     return br.height();
   }
-  const qreal x = br.right() + CHILD_TO_PARENT_SPACE;
+  const qreal x = br.right() + systemConfig(SystemConfig::leftToRightLayoutNodeXSpace).toReal();
   const qreal childHeight = childrenHeight(node);
   qreal y = br.center().y() - childHeight / 2;
   foreach (Node* childNode, node->childNodes()) {
@@ -36,7 +37,7 @@ qreal LeftToRightTreeLayoutProxy::layoutChild(Node* node) {
     QPointF parentPos = parentToChild + node->rightCenter() + OFFSET;
     QPointF childPos = childNode->leftCenter() - OFFSET;
     childNode->connection()->draw(parentPos, childPos, CUBIC_POINT);
-    y += th + CHILD_TO_CHILD_SPACE;
+    y += th + systemConfig(SystemConfig::leftToRightLayoutNodeYSpace).toReal();
   }
   return qMax(childHeight, br.height());
 }
@@ -49,10 +50,11 @@ qreal LeftToRightTreeLayoutProxy::childrenHeight(Node* node) {
   if (!node->hasChild()) {
     return 0;
   }
-  qreal height = -CHILD_TO_CHILD_SPACE;
+  qreal leftToRightLayoutNodeYSpace = systemConfig(SystemConfig::leftToRightLayoutNodeYSpace).toReal();
+  qreal height = -leftToRightLayoutNodeYSpace;
   foreach (Node* childNode, node->childNodes()) {
     height += treeHeight(childNode);
-    height += CHILD_TO_CHILD_SPACE;
+    height += leftToRightLayoutNodeYSpace;
   }
   return height;
 }

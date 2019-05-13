@@ -10,6 +10,13 @@ DefineConfig(backgroundColor);
 DefineConfig(exportPngTransparent);
 DefineConfig(styleSheetPath);
 DefineConfig(textColor);
+DefineConfig(connectionColor);
+DefineConfig(graphicsUpdateDelayTime);
+DefineConfig(zoomScrollDirection);
+DefineConfig(leftToRightLayoutNodeXSpace);
+DefineConfig(leftToRightLayoutNodeYSpace);
+DefineConfig(topToBottomLayoutNodeXSpace);
+DefineConfig(topToBottomLayoutNodeYSpace);
 }
 
 QVariant systemConfig(const QString& name);

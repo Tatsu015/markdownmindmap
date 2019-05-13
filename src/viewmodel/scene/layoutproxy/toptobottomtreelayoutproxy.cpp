@@ -1,11 +1,10 @@
 #include "toptobottomtreelayoutproxy.h"
+#include "utility/systemconfig.h"
 #include "viewmodel/graphicsitem/connection.h"
 #include "viewmodel/graphicsitem/node.h"
 #include <QDebug>
 #include <QRectF>
 
-const qreal CHILD_TO_PARENT_SPACE = 36;
-const qreal CHILD_TO_CHILD_SPACE = 16;
 const QPointF OFFSET(0, 10);
 const QPointF CUBIC_POINT(0, 10);
 
@@ -26,7 +25,7 @@ qreal TopToBottomTreeLayoutProxy::layoutChild(Node* node) {
   if (!node->hasChild()) {
     return br.width();
   }
-  const qreal y = br.bottom() + CHILD_TO_PARENT_SPACE;
+  const qreal y = br.bottom() + systemConfig(SystemConfig::topToBottomLayoutNodeYSpace).toReal();
   const qreal childWidth = childrenWidth(node);
   qreal x = br.center().x() - childWidth / 2;
   foreach (Node* childNode, node->childNodes()) {
@@ -36,7 +35,7 @@ qreal TopToBottomTreeLayoutProxy::layoutChild(Node* node) {
     QPointF parentPos = parentToChild + node->bottomCenter() + OFFSET;
     QPointF childPos = childNode->topCenter() - OFFSET;
     childNode->connection()->draw(parentPos, childPos, CUBIC_POINT);
-    x += th + CHILD_TO_CHILD_SPACE;
+    x += th + systemConfig(SystemConfig::topToBottomLayoutNodeXSpace).toReal();
   }
   return qMax(childWidth, br.bottom());
 }
@@ -49,10 +48,11 @@ qreal TopToBottomTreeLayoutProxy::childrenWidth(Node* node) {
   if (!node->hasChild()) {
     return 0;
   }
-  qreal width = -CHILD_TO_CHILD_SPACE;
+  qreal topToBottomLayoutNodeXSpace = systemConfig(SystemConfig::topToBottomLayoutNodeXSpace).toReal();
+  qreal width = -topToBottomLayoutNodeXSpace;
   foreach (Node* childNode, node->childNodes()) {
     width += treeWidth(childNode);
-    width += CHILD_TO_CHILD_SPACE;
+    width += topToBottomLayoutNodeXSpace;
   }
   return width;
 }

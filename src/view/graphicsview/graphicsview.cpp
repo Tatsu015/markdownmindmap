@@ -71,7 +71,7 @@ Scene* GraphicsView::customScene() const {
 void GraphicsView::onScalingTime(qreal x) {
   Q_UNUSED(x);
 
-  int scrollDirection = 1;
+  int scrollDirection = systemConfig(SystemConfig::zoomScrollDirection).toInt();
   qreal factor = 1.0 + qreal(scrollDirection * m_numScheduledScalings) / 300.0;
   scale(factor, factor);
 }

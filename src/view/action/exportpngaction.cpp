@@ -35,8 +35,7 @@ void ExportPngAction::execute() {
   scene->setSceneRect(scene->itemsBoundingRect());
   QImage image(scene->sceneRect().size().toSize(), QImage::Format_ARGB32);
 
-  bool exportTransparentPng = systemConfig(SystemConfig::exportPngTransparent).toBool();
-  if (exportTransparentPng) {
+  if (systemConfig(SystemConfig::exportPngTransparent).toBool()) {
     image.fill(Qt::transparent);
   } else {
     image.fill(graphicsView->backgroundBrush().color());

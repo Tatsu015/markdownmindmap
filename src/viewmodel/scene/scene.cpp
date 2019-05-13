@@ -1,5 +1,6 @@
 #include "scene.h"
 #include "model/document.h"
+#include "utility/systemconfig.h"
 #include "viewmodel/graphicsitem/node.h"
 #include "viewmodel/parser/markdownparser.h"
 #include "viewmodel/scene/layoutproxy/abstractlayoutproxy.h"
@@ -43,7 +44,7 @@ void Scene::changeActiveLayoutDecolator(const QString& name) {
 
 void Scene::onStartTimer() {
   m_timer->stop();
-  m_timer->start(300);
+  m_timer->start(systemConfig(SystemConfig::graphicsUpdateDelayTime).toInt());
 }
 
 void Scene::onUpdateMindMap() {
