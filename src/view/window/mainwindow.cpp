@@ -69,5 +69,5 @@ void MainWindow::setupStyleSheet() {
 }
 
 void MainWindow::setupAction(QMenu* menu, AbstractAction* action) {
-  menu->addAction(action->action());
+  menu->addActions(action->actions());
 }

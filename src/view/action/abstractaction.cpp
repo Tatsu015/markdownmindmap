@@ -7,6 +7,6 @@ AbstractAction::AbstractAction(QObject* parent) : QObject(parent) {
 AbstractAction::~AbstractAction() {
 }
 
-QAction* AbstractAction::action() const {
-  return m_action;
+QList<QAction*> AbstractAction::actions() const {
+  return m_actions;
 }

@@ -10,8 +10,9 @@
 #include <QImage>
 
 ExportPngAction::ExportPngAction(QObject* parent) : AbstractAction(parent) {
-  m_action = new QAction("Export PNG");
-  connect(m_action, &QAction::triggered, this, &ExportPngAction::execute);
+  QAction* exportAction = new QAction("Export PNG");
+  connect(exportAction, &QAction::triggered, this, &ExportPngAction::execute);
+  m_actions << exportAction;
 }
 
 ExportPngAction::~ExportPngAction() {

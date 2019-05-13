@@ -9,9 +9,10 @@
 #include <QTextStream>
 
 ExitAction::ExitAction(QObject* parent) : AbstractAction(parent) {
-  m_action = new QAction("Exit");
-  m_action->setShortcut(QKeySequence::Quit);
-  connect(m_action, &QAction::triggered, this, &ExitAction::execute);
+  QAction* exitAction = new QAction("Exit");
+  exitAction->setShortcut(QKeySequence::Quit);
+  connect(exitAction, &QAction::triggered, this, &ExitAction::execute);
+  m_actions << exitAction;
 }
 
 ExitAction::~ExitAction() {

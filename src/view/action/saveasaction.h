@@ -9,7 +9,7 @@ public:
   virtual ~SaveAsAction();
 
 protected slots:
-  virtual void execute();
+  void execute();
 };
 
 #endif // SAVEASACTION_H

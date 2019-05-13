@@ -9,9 +9,10 @@
 #include <QTextStream>
 
 SaveAction::SaveAction(QObject* parent) : AbstractAction(parent) {
-  m_action = new QAction("Save");
-  m_action->setShortcut(QKeySequence::Save);
-  connect(m_action, &QAction::triggered, this, &SaveAction::execute);
+  QAction* saveAction = new QAction("Save");
+  saveAction->setShortcut(QKeySequence::Save);
+  connect(saveAction, &QAction::triggered, this, &SaveAction::execute);
+  m_actions << saveAction;
 }
 
 SaveAction::~SaveAction() {

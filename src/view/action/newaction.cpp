@@ -9,9 +9,10 @@
 #include <QTextStream>
 
 NewAction::NewAction(QObject* parent) : AbstractAction(parent) {
-  m_action = new QAction("New");
-  m_action->setShortcut(QKeySequence::New);
-  connect(m_action, &QAction::triggered, this, &NewAction::execute);
+  QAction* newAction = new QAction("New");
+  newAction->setShortcut(QKeySequence::New);
+  connect(newAction, &QAction::triggered, this, &NewAction::execute);
+  m_actions << newAction;
 }
 
 NewAction::~NewAction() {

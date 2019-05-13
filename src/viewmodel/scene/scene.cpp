@@ -10,7 +10,6 @@
 Scene::Scene(Document* document) : QGraphicsScene(), m_document(document) {
   addLayouterDecorator(new LeftToRightTreeLayoutProxy());
   addLayouterDecorator(new TopToBottomTreeLayoutProxy());
-  m_activeLayoutProxy = m_layoutProxies.last();
 
   m_timer = new QTimer();
   connect(m_document, &Document::contentsChanged, this, &Scene::onStartTimer);

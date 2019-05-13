@@ -12,13 +12,10 @@ public:
   AbstractAction(QObject* parent = nullptr);
   virtual ~AbstractAction();
 
-  QAction* action() const;
-
-protected slots:
-  virtual void execute() = 0;
+  QList<QAction*> actions() const;
 
 protected:
-  QAction* m_action = nullptr;
+  QList<QAction*> m_actions;
 };
 
 #endif // ABSTRACTACTION_H

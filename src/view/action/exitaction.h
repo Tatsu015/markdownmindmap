@@ -9,7 +9,7 @@ public:
   virtual ~ExitAction();
 
 protected slots:
-  virtual void execute();
+  void execute();
 };
 
 #endif // EXITACTION_H

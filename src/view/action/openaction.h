@@ -9,7 +9,7 @@ public:
   virtual ~OpenAction();
 
 protected slots:
-  virtual void execute();
+  void execute();
 };
 
 #endif // OPENACTION_H

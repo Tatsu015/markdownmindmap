@@ -9,7 +9,7 @@ public:
   virtual ~ExportPngAction();
 
 protected slots:
-  virtual void execute();
+  void execute();
 };
 
 #endif // ExportPngAction_H

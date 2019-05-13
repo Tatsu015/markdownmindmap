@@ -9,7 +9,7 @@ public:
   virtual ~NewAction();
 
 protected slots:
-  virtual void execute();
+  void execute();
 };
 
 #endif // NEWACTION_H

@@ -8,9 +8,10 @@
 #include <QTextStream>
 
 OpenAction::OpenAction(QObject* parent) : AbstractAction(parent) {
-  m_action = new QAction("Open");
-  m_action->setShortcut(QKeySequence::Open);
-  connect(m_action, &QAction::triggered, this, &OpenAction::execute);
+  QAction* openAction = new QAction("Open");
+  openAction->setShortcut(QKeySequence::Open);
+  connect(openAction, &QAction::triggered, this, &OpenAction::execute);
+  m_actions << openAction;
 }
 
 OpenAction::~OpenAction() {
