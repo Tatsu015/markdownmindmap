@@ -5,10 +5,10 @@
 
 class QActionGroup;
 
-class ChangeLeftToRightLayoutAction : public AbstractAction {
+class ChangeLayoutAction : public AbstractAction {
 public:
-  ChangeLeftToRightLayoutAction(QObject* parent = nullptr);
-  virtual ~ChangeLeftToRightLayoutAction();
+  ChangeLayoutAction(QObject* parent = nullptr);
+  virtual ~ChangeLayoutAction();
 
 protected slots:
   void execute();

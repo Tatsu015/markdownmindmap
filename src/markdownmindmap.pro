@@ -34,7 +34,6 @@ SOURCES += \
     view/action/saveaction.cpp \
     view/action/saveasaction.cpp \
     view/action/exportpngaction.cpp \
-    view/action/changelefttorightlayoutaction.cpp \
     view/codeeditor/codeeditor.cpp \
     view/graphicsview/graphicsview.cpp \
     view/window/mainwindow.cpp \
@@ -46,7 +45,8 @@ SOURCES += \
     viewmodel/scene/layoutproxy/toptobottomtreelayoutproxy.cpp \
     viewmodel/scene/scene.cpp \
     main.cpp \
-    utility/systemconfig.cpp
+    utility/systemconfig.cpp \
+    view/action/changelelayoutaction.cpp
 
 HEADERS += \
     controller/application.h \
@@ -57,7 +57,6 @@ HEADERS += \
     view/action/openaction.h \
     view/action/saveaction.h \
     view/action/saveasaction.h \
-    view/action/changelefttorightlayoutaction.h \
     view/action/exportpngaction.h \
     view/codeeditor/codeeditor.h \
     view/graphicsview/graphicsview.h \
@@ -69,7 +68,8 @@ HEADERS += \
     viewmodel/scene/layoutproxy/lefttorighttreelayoutproxy.h \
     viewmodel/scene/layoutproxy/toptobottomtreelayoutproxy.h \
     viewmodel/scene/scene.h \
-    utility/systemconfig.h
+    utility/systemconfig.h \
+    view/action/changelayoutaction.h
 
 FORMS += \
     view/window/mainwindow.ui
