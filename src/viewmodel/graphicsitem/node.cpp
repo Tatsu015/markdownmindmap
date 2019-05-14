@@ -4,7 +4,7 @@
 #include <QDebug>
 #include <QPen>
 
-Node::Node(const QString& text, uint32_t depth, QGraphicsItem* parent)
+Node::Node(const QString& text, const uint32_t depth, const uint32_t lineCount, QGraphicsItem* parent)
     : QGraphicsSimpleTextItem(text, parent), m_depth(depth), m_connection(new Connection(this)) {
   QColor color = systemConfig(SystemConfig::textColor).value<QColor>();
   setPen(QPen(color));
@@ -40,6 +40,10 @@ Node* Node::parentNode() const {
 
 uint32_t Node::depth() const {
   return m_depth;
+}
+
+uint32_t Node::lineCount() const {
+  return m_lineCount;
 }
 
 QPointF Node::topCenter() const {

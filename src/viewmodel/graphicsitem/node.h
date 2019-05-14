@@ -7,7 +7,7 @@ class Connection;
 
 class Node : public QGraphicsSimpleTextItem {
 public:
-  Node(const QString& text, uint32_t depth, QGraphicsItem* parent = nullptr);
+  Node(const QString& text, const uint32_t depth, const uint32_t lineCount, QGraphicsItem* parent = nullptr);
   virtual ~Node();
 
   void addChildNode(Node* childNode);
@@ -17,6 +17,7 @@ public:
 
   Node* parentNode() const;
   uint32_t depth() const;
+  uint32_t lineCount() const;
 
   QPointF topCenter() const;
   QPointF rightCenter() const;
@@ -30,6 +31,7 @@ private:
   QList<Node*> m_childNodes;
   uint32_t m_depth = 0;
   Connection* m_connection = nullptr;
+  uint32_t m_lineCount;
 };
 
 #endif // NODE_H
