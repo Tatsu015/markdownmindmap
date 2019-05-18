@@ -8,6 +8,7 @@ Node::Node(const QString& text, const uint32_t depth, const uint32_t lineCount, 
     : QGraphicsSimpleTextItem(text, parent), m_depth(depth), m_connection(new Connection(this)) {
   QColor color = systemConfig(SystemConfig::textColor).value<QColor>();
   setPen(QPen(color));
+  setBrush(QBrush(color));
 }
 
 Node::~Node() {
