@@ -14,10 +14,11 @@ protected slots:
   void execute();
 
 private:
+  void addAction(QAction* action);
   void setDefaultAction(QAction* activeAction);
 
 private:
-  QActionGroup* actionGroup = nullptr;
+  QActionGroup* m_actionGroup = nullptr;
 };
 
 #endif // ChangeLeftToRightLayoutAction_H

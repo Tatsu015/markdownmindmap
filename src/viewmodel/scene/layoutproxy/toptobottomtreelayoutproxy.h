@@ -12,14 +12,14 @@ public:
   TopToBottomTreeLayoutProxy();
   virtual ~TopToBottomTreeLayoutProxy();
 
-  void layout(Node* rootNode);
+  virtual void layout(Node* rootNode);
   virtual QString name() const;
 
 private:
-  virtual qreal layoutChild(Node* node);
-
-  qreal treeWidth(Node* node);
-  qreal childrenWidth(Node* node);
+  qreal layoutChild(const Node* node);
+  qreal treeWidth(const Node* node);
+  qreal childrenWidth(const Node* node);
+  void drawConnection(const Node* parentNode, const Node* childNode);
 };
 
 #endif // TOPTOBOTTOMTREELAYOUTDECORATOR_H

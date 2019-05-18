@@ -12,14 +12,14 @@ public:
   LeftToRightTreeLayoutProxy();
   virtual ~LeftToRightTreeLayoutProxy();
 
-  void layout(Node* rootNode);
+  virtual void layout(Node* rootNode);
   virtual QString name() const;
 
 private:
-  virtual qreal layoutChild(Node* node);
-
-  qreal treeHeight(Node* node);
-  qreal childrenHeight(Node* node);
+  qreal layoutChild(const Node* node);
+  qreal treeHeight(const Node* node);
+  qreal childrenHeight(const Node* node);
+  void drawConnection(const Node* parentNode, const Node* childNode);
 };
 
 #endif // LEFTTORIGHTTREELAYOUTDECORATOR_H

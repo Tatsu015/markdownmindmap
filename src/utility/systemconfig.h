@@ -13,10 +13,12 @@ DefineConfig(textColor);
 DefineConfig(connectionColor);
 DefineConfig(graphicsUpdateDelayTime);
 DefineConfig(zoomScrollDirection);
-DefineConfig(leftToRightLayoutNodeXSpace);
-DefineConfig(leftToRightLayoutNodeYSpace);
-DefineConfig(topToBottomLayoutNodeXSpace);
-DefineConfig(topToBottomLayoutNodeYSpace);
+DefineConfig(leftToRightTreeLayoutNodeXSpace);
+DefineConfig(leftToRightTreeLayoutNodeYSpace);
+DefineConfig(topToBottomTreeLayoutNodeXSpace);
+DefineConfig(topToBottomTreeLayoutNodeYSpace);
+DefineConfig(bothSidesTreeLayoutNodeXSpace);
+DefineConfig(bothSidesTreeLayoutNodeYSpace);
 }
 
 QVariant systemConfig(const QString& name);

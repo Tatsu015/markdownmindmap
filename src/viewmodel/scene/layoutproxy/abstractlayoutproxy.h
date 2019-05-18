@@ -10,12 +10,8 @@ public:
   AbstractLayoutProxy();
   virtual ~AbstractLayoutProxy();
 
-  void layout(Node* rootNode);
-
+  virtual void layout(Node* rootNode) = 0;
   virtual QString name() const = 0;
-
-private:
-  virtual qreal layoutChild(Node* node) = 0;
 };
 
 #endif // ABSTRACTLAYOUTERDECORATOR_H

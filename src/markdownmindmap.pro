@@ -43,10 +43,11 @@ SOURCES += \
     viewmodel/scene/layoutproxy/abstractlayoutproxy.cpp \
     viewmodel/scene/layoutproxy/lefttorighttreelayoutproxy.cpp \
     viewmodel/scene/layoutproxy/toptobottomtreelayoutproxy.cpp \
+    viewmodel/scene/layoutproxy/bothsidestreelayoutproxy.cpp \
     viewmodel/scene/scene.cpp \
     main.cpp \
     utility/systemconfig.cpp \
-    view/action/changelelayoutaction.cpp
+    view/action/changelayoutaction.cpp
 
 HEADERS += \
     controller/application.h \
@@ -67,6 +68,7 @@ HEADERS += \
     viewmodel/scene/layoutproxy/abstractlayoutproxy.h \
     viewmodel/scene/layoutproxy/lefttorighttreelayoutproxy.h \
     viewmodel/scene/layoutproxy/toptobottomtreelayoutproxy.h \
+    viewmodel/scene/layoutproxy/bothsidestreelayoutproxy.h \
     viewmodel/scene/scene.h \
     utility/systemconfig.h \
     view/action/changelayoutaction.h
