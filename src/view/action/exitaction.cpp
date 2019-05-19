@@ -23,7 +23,7 @@ void ExitAction::execute() {
 
   QString projectPath;
   if (Application::getInstance()->document()->filePath().isEmpty()) {
-    if (Application::getInstance()->ui()->textEdit->toPlainText().isEmpty()) {
+    if (Application::getInstance()->ui()->codeEditor->toPlainText().isEmpty()) {
       qApp->exit(0);
       return;
     }

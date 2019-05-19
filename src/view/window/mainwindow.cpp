@@ -14,6 +14,7 @@
 #include "viewmodel/scene/scene.h"
 #include <QDebug>
 #include <QKeyEvent>
+#include <QPlainTextDocumentLayout>
 
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), m_ui(new Ui::MainWindow) {
   Application::getInstance()->setUp();
@@ -21,9 +22,11 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), m_ui(new Ui::Main
   m_ui->setupUi(this);
 
   Document* doc = new Document();
+  QPlainTextDocumentLayout* documentLayout = new QPlainTextDocumentLayout(doc);
+  doc->setDocumentLayout(documentLayout);
   m_scene = new Scene(doc);
   Application::getInstance()->setDocument(doc);
-  m_ui->textEdit->setDocument(doc);
+  m_ui->codeEditor->setDocument(doc);
   Application::getInstance()->setUi(m_ui);
   m_ui->graphicsView->setScene(m_scene);
 

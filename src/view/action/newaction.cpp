@@ -23,7 +23,7 @@ void NewAction::execute() {
 
   QString projectPath;
   if (Application::getInstance()->document()->filePath().isEmpty()) {
-    if (Application::getInstance()->ui()->textEdit->toPlainText().isEmpty()) {
+    if (Application::getInstance()->ui()->codeEditor->toPlainText().isEmpty()) {
       return;
     }
     projectPath = QFileDialog::getSaveFileName(nullptr, QObject::tr("Save file"), QDir::currentPath(),
