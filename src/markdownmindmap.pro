@@ -47,7 +47,8 @@ SOURCES += \
     viewmodel/scene/scene.cpp \
     main.cpp \
     utility/systemconfig.cpp \
-    view/action/changelayoutaction.cpp
+    view/action/changelayoutaction.cpp \
+    utility/stringutil.cpp
 
 HEADERS += \
     controller/application.h \
@@ -71,7 +72,8 @@ HEADERS += \
     viewmodel/scene/layoutproxy/bothsidestreelayoutproxy.h \
     viewmodel/scene/scene.h \
     utility/systemconfig.h \
-    view/action/changelayoutaction.h
+    view/action/changelayoutaction.h \
+    utility/stringutil.h
 
 FORMS += \
     view/window/mainwindow.ui

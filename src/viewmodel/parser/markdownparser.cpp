@@ -1,8 +1,8 @@
 #include "markdownparser.h"
+#include "utility/stringutil.h"
 #include "viewmodel/graphicsitem/node.h"
 #include <QDebug>
 
-const static QChar INDENT_KEYWORD = ' ';
 const static QString RETURN_CODE = "\n";
 
 MarkdownParser::MarkdownParser() {
@@ -95,15 +95,4 @@ bool MarkdownParser::hasMonoRootNode(QStringList validLines) {
     }
   }
   return true;
-}
-
-uint32_t MarkdownParser::indentCount(const QString& oneLine) {
-  uint32_t count = 0;
-  if (0 >= oneLine.count()) {
-    return 0;
-  }
-  while (INDENT_KEYWORD == oneLine[count]) {
-    ++count;
-  }
-  return count;
 }
