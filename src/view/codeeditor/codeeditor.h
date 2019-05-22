@@ -3,6 +3,8 @@
 
 #include <QPlainTextEdit>
 
+class AbstractKeyBehavior;
+
 class CodeEditor : public QPlainTextEdit {
   Q_OBJECT
 
@@ -12,6 +14,9 @@ public:
 
 protected:
   virtual void keyPressEvent(QKeyEvent* event) override;
+
+private:
+  QMap<Qt::Key, AbstractKeyBehavior*> m_keyBehavior;
 };
 
 #endif // CODEEDITOR_H

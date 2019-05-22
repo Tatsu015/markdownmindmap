@@ -1,53 +1,24 @@
 #include "codeeditor.h"
 #include "ui_mainwindow.h"
 #include "utility/stringutil.h"
-#include <QDebug>
+#include "view/codeeditor/keybehavior/backtabkeybehavior.h"
+#include "view/codeeditor/keybehavior/returnkeybehavior.h"
+#include "view/codeeditor/keybehavior/tabkeybehavior.h"
 #include <QTextBlock>
 
 CodeEditor::CodeEditor(QWidget* parent) : QPlainTextEdit(parent) {
-  setTabChangesFocus(false);
+  m_keyBehavior[Qt::Key_Tab] = new TabKeyBehavior();
+  m_keyBehavior[Qt::Key_Backtab] = new BackTabKeyBehavior();
+  m_keyBehavior[Qt::Key_Return] = new ReturnKeyBehavior();
 }
 
 CodeEditor::~CodeEditor() {
 }
 
 void CodeEditor::keyPressEvent(QKeyEvent* event) {
-  if (Qt::Key_Tab == event->key()) {
-    QTextCursor cursor = textCursor();
-    if (cursor.hasSelection()) {
-      QString replaceFrom;
-      QString replaceTo;
-      if (event->modifiers() & Qt::ShiftModifier) {
-        // TODO do not work!
-        replaceFrom = QString(QChar::ParagraphSeparator + " ");
-        replaceTo = "\n";
-      } else {
-        replaceFrom = QString(QChar::ParagraphSeparator);
-        replaceTo = "\n ";
-      }
-      QString selectedText = cursor.selectedText();
-      cursor.removeSelectedText();
-      QString indentedText = selectedText.replace(replaceFrom, replaceTo);
-      cursor.insertText(indentedText);
-    } else {
-      QTextCursor cursor = textCursor();
-      QString nowLine = cursor.block().text();
-      cursor.select(QTextCursor::BlockUnderCursor);
-      cursor.removeSelectedText();
-      cursor.insertText("\n " + nowLine);
-    }
-  } else if (Qt::Key_Return == event->key()) {
-    if (event->modifiers() & Qt::ControlModifier) {
-      QTextCursor cursor = textCursor();
-      cursor.movePosition(QTextCursor::End);
-      setTextCursor(cursor);
-      cursor.insertText("\n");
-    } else {
-      QTextCursor cursor = textCursor();
-      QString lastLine = cursor.block().text();
-      QString indent = extractIndent(lastLine, ' ');
-      cursor.insertText("\n" + indent);
-    }
+  AbstractKeyBehavior* keyBehavior = m_keyBehavior[static_cast<Qt::Key>(event->key())];
+  if (keyBehavior) {
+    keyBehavior->keyPressEvent(this, event);
   } else {
     QPlainTextEdit::keyPressEvent(event);
   }

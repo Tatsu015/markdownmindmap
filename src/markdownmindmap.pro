@@ -48,7 +48,11 @@ SOURCES += \
     main.cpp \
     utility/systemconfig.cpp \
     view/action/changelayoutaction.cpp \
-    utility/stringutil.cpp
+    utility/stringutil.cpp \
+    view/codeeditor/keybehavior/abstractkeybehavior.cpp \
+    view/codeeditor/keybehavior/tabkeybehavior.cpp \
+    view/codeeditor/keybehavior/backtabkeybehavior.cpp \
+    view/codeeditor/keybehavior/returnkeybehavior.cpp \
 
 HEADERS += \
     controller/application.h \
@@ -73,7 +77,12 @@ HEADERS += \
     viewmodel/scene/scene.h \
     utility/systemconfig.h \
     view/action/changelayoutaction.h \
-    utility/stringutil.h
+    utility/stringutil.h \
+    view/codeeditor/keybehavior/abstractkeybehavior.h \
+    view/codeeditor/keybehavior/tabkeybehavior.h \
+    view/codeeditor/keybehavior/backtabkeybehavior.h \
+    view/codeeditor/keybehavior/returnkeybehavior.h \
+
 
 FORMS += \
     view/window/mainwindow.ui
