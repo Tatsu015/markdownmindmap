@@ -1,5 +1,5 @@
-#ifndef LEFTTORIGHTTREELAYOUTDECORATOR_H
-#define LEFTTORIGHTTREELAYOUTDECORATOR_H
+#ifndef LEFTTORIGHTTREELAYOUTPROXY_H
+#define LEFTTORIGHTTREELAYOUTPROXY_H
 
 #include "abstractlayoutproxy.h"
 #include <QString>
@@ -22,4 +22,4 @@ private:
   void drawConnection(const Node* parentNode, const Node* childNode);
 };
 
-#endif // LEFTTORIGHTTREELAYOUTDECORATOR_H
+#endif // LEFTTORIGHTTREELAYOUTPROXY_H

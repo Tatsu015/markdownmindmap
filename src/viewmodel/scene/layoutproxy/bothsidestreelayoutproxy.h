@@ -1,5 +1,5 @@
-#ifndef BOTHSIDESTREELAYOUTDECORATOR_H
-#define BOTHSIDESTREELAYOUTDECORATOR_H
+#ifndef BOTHSIDESTREELAYOUTPROXY_H
+#define BOTHSIDESTREELAYOUTPROXY_H
 
 #include "abstractlayoutproxy.h"
 #include <QString>
@@ -26,4 +26,4 @@ private:
   void shiftLeftToRightNodes(QList<Node*> nodes, const qreal x, const qreal y);
 };
 
-#endif // BOTHSIDESTREELAYOUTDECORATOR_H
+#endif // BOTHSIDESTREELAYOUTPROXY_H

@@ -1,5 +1,5 @@
-#ifndef ChangeLeftToRightLayoutAction_H
-#define ChangeLeftToRightLayoutAction_H
+#ifndef CHANGELAYOUTACTION_H
+#define CHANGELAYOUTACTION_H
 
 #include "view/action/abstractaction.h"
 
@@ -21,4 +21,4 @@ private:
   QActionGroup* m_actionGroup = nullptr;
 };
 
-#endif // ChangeLeftToRightLayoutAction_H
+#endif // CHANGELAYOUTACTION_H

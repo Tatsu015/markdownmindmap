@@ -1,5 +1,5 @@
-#ifndef ReturnKeyBehavior_H
-#define ReturnKeyBehavior_H
+#ifndef RETURNKEYBEHAVIOR_H
+#define RETURNKEYBEHAVIOR_H
 
 #include "view/codeeditor/keybehavior/abstractkeybehavior.h"
 
@@ -13,4 +13,4 @@ protected:
   virtual void controlModifierKeyPressEvent(CodeEditor* codeEditor);
 };
 
-#endif // ReturnKeyBehavior_H
+#endif // RETURNKEYBEHAVIOR_H

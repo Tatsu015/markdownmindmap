@@ -1,5 +1,5 @@
-#ifndef ExportPngAction_H
-#define ExportPngAction_H
+#ifndef EXPORTPNGACTION_H
+#define EXPORTPNGACTION_H
 
 #include "view/action/abstractaction.h"
 
@@ -12,4 +12,4 @@ protected slots:
   void execute();
 };
 
-#endif // ExportPngAction_H
+#endif // EXPORTPNGACTION_H

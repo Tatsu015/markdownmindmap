@@ -1,5 +1,5 @@
-#ifndef ABSTRACTLAYOUTERDECORATOR_H
-#define ABSTRACTLAYOUTERDECORATOR_H
+#ifndef ABSTRACTLAYOUTPROXY_H
+#define ABSTRACTLAYOUTPROXY_H
 
 #include <QtGlobal>
 
@@ -14,4 +14,4 @@ public:
   virtual QString name() const = 0;
 };
 
-#endif // ABSTRACTLAYOUTERDECORATOR_H
+#endif // ABSTRACTLAYOUTPROXY_H

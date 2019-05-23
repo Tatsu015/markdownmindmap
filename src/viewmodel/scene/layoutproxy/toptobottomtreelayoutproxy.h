@@ -1,5 +1,5 @@
-#ifndef TOPTOBOTTOMTREELAYOUTDECORATOR_H
-#define TOPTOBOTTOMTREELAYOUTDECORATOR_H
+#ifndef TOPTOBOTTOMTREELAYOUTPROXY_H
+#define TOPTOBOTTOMTREELAYOUTPROXY_H
 
 #include "abstractlayoutproxy.h"
 #include <QString>
@@ -22,4 +22,4 @@ private:
   void drawConnection(const Node* parentNode, const Node* childNode);
 };
 
-#endif // TOPTOBOTTOMTREELAYOUTDECORATOR_H
+#endif // TOPTOBOTTOMTREELAYOUTPROXY_H
