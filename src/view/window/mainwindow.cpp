@@ -50,11 +50,10 @@ void MainWindow::setupMenu() {
   setupAction(fileMenu, new OpenAction());
   setupAction(fileMenu, new SaveAction());
   setupAction(fileMenu, new SaveAsAction());
+  QMenu* exportMenu = new QMenu("Export");
+  fileMenu->addMenu(exportMenu);
+  setupAction(exportMenu, new ExportPngAction());
   setupAction(fileMenu, new ExitAction());
-
-  QMenu* toolMenu = new QMenu("Tool");
-  m_ui->menuBar->addMenu(toolMenu);
-  setupAction(toolMenu, new ExportPngAction());
 
   QMenu* viewMenu = new QMenu("View");
   m_ui->menuBar->addMenu(viewMenu);
