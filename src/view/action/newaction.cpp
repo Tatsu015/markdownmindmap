@@ -2,6 +2,7 @@
 #include "controller/application.h"
 #include "model/document.h"
 #include "ui_mainwindow.h"
+#include "utility/definition.h"
 #include <QAction>
 #include <QFile>
 #include <QFileDialog>
@@ -21,18 +22,22 @@ NewAction::~NewAction() {
 void NewAction::execute() {
   emit Application::getInstance()->document()->contentsChanged();
 
-  QString projectPath;
+  QString filePath;
   if (Application::getInstance()->document()->filePath().isEmpty()) {
     if (Application::getInstance()->ui()->codeEditor->toPlainText().isEmpty()) {
       return;
     }
-    projectPath = QFileDialog::getSaveFileName(nullptr, QObject::tr("Save file"), QDir::currentPath(),
-                                               QObject::tr("project files (*.mdmm)"));
+    filePath = QFileDialog::getSaveFileName(nullptr, QObject::tr("Save file"), QDir::currentPath(),
+                                            "project files (*." + MARKDOWN_MIND_MAP_SUFFIX + ")");
   } else {
-    projectPath = Application::getInstance()->document()->filePath();
+    filePath = Application::getInstance()->document()->filePath();
   }
 
-  QFile f(projectPath);
+  QFileInfo info(filePath);
+  if (MARKDOWN_MIND_MAP_SUFFIX != info.suffix()) {
+    filePath += ("." + MARKDOWN_MIND_MAP_SUFFIX);
+  }
+  QFile f(filePath);
   if (!f.open(QIODevice::WriteOnly)) {
     return;
   }

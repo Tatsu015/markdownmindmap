@@ -20,6 +20,8 @@ Scene::Scene(Document* document) : QGraphicsScene(), m_document(document) {
 }
 
 Scene::~Scene() {
+  qDeleteAll(m_layoutProxies);
+  delete m_timer;
 }
 
 void Scene::updateMindMap() {

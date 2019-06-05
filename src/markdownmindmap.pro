@@ -82,6 +82,7 @@ HEADERS += \
     view/codeeditor/keybehavior/tabkeybehavior.h \
     view/codeeditor/keybehavior/backtabkeybehavior.h \
     view/codeeditor/keybehavior/returnkeybehavior.h \
+    utility/definition.h
 
 
 FORMS += \

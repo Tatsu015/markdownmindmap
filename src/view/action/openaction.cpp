@@ -2,6 +2,7 @@
 #include "controller/application.h"
 #include "model/document.h"
 #include "ui_mainwindow.h"
+#include "utility/definition.h"
 #include <QAction>
 #include <QFile>
 #include <QFileDialog>
@@ -19,7 +20,7 @@ OpenAction::~OpenAction() {
 
 void OpenAction::execute() {
   QString filePath = QFileDialog::getOpenFileName(nullptr, QObject::tr("Open file"), QDir::currentPath(),
-                                                  QObject::tr("mdmm files (*.mdmm)"));
+                                                  "project files (*." + MARKDOWN_MIND_MAP_SUFFIX + ")");
 
   QFile f(filePath);
   if (!f.open(QIODevice::ReadOnly)) {

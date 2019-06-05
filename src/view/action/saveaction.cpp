@@ -3,6 +3,7 @@
 #include "controller/application.h"
 #include "model/document.h"
 #include "ui_mainwindow.h"
+#include "utility/definition.h"
 #include <QAction>
 #include <QFile>
 #include <QFileDialog>
@@ -24,11 +25,15 @@ void SaveAction::execute() {
   QString filePath;
   if (Application::getInstance()->document()->filePath().isEmpty()) {
     filePath = QFileDialog::getSaveFileName(nullptr, QObject::tr("Save file"), QDir::currentPath(),
-                                            QObject::tr("project files (*.mdmm)"));
+                                            "project files (*." + MARKDOWN_MIND_MAP_SUFFIX + ")");
   } else {
     filePath = Application::getInstance()->document()->filePath();
   }
 
+  QFileInfo info(filePath);
+  if (MARKDOWN_MIND_MAP_SUFFIX != info.suffix()) {
+    filePath += ("." + MARKDOWN_MIND_MAP_SUFFIX);
+  }
   QFile f(filePath);
   if (!f.open(QIODevice::WriteOnly)) {
     return;

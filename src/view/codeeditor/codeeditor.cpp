@@ -13,6 +13,7 @@ CodeEditor::CodeEditor(QWidget* parent) : QPlainTextEdit(parent) {
 }
 
 CodeEditor::~CodeEditor() {
+  qDeleteAll(m_keyBehavior);
 }
 
 void CodeEditor::keyPressEvent(QKeyEvent* event) {
