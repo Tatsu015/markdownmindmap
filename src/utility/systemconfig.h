@@ -13,6 +13,7 @@ DefineConfig(textColor);
 DefineConfig(connectionColor);
 DefineConfig(graphicsUpdateDelayTime);
 DefineConfig(zoomScrollDirection);
+DefineConfig(defaultViewSplitRate);
 DefineConfig(leftToRightTreeLayoutNodeXSpace);
 DefineConfig(leftToRightTreeLayoutNodeYSpace);
 DefineConfig(topToBottomTreeLayoutNodeXSpace);

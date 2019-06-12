@@ -18,7 +18,9 @@ public:
   virtual ~MainWindow();
 
 private:
+  void setupDocument();
   void setupScene();
+  void setupGraphicsView();
   void setupMenu();
   void setupStyleSheet();
 

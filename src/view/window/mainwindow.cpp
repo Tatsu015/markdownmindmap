@@ -12,25 +12,18 @@
 #include "view/action/saveasaction.h"
 #include "viewmodel/graphicsitem/node.h"
 #include "viewmodel/scene/scene.h"
-#include <QDebug>
 #include <QKeyEvent>
 #include <QPlainTextDocumentLayout>
 
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), m_ui(new Ui::MainWindow) {
   Application::getInstance()->setUp();
+  Application::getInstance()->setUi(m_ui);
 
   m_ui->setupUi(this);
 
-  Document* doc = new Document();
-  QPlainTextDocumentLayout* documentLayout = new QPlainTextDocumentLayout(doc);
-  doc->setDocumentLayout(documentLayout);
-  m_scene = new Scene(doc);
-  Application::getInstance()->setDocument(doc);
-  m_ui->codeEditor->setDocument(doc);
-  Application::getInstance()->setUi(m_ui);
-  m_ui->graphicsView->setScene(m_scene);
-
+  setupDocument();
   setupScene();
+  setupGraphicsView();
   setupMenu();
   setupStyleSheet();
 }
@@ -40,7 +33,24 @@ MainWindow::~MainWindow() {
   delete m_ui;
 }
 
+void MainWindow::setupDocument() {
+  Document* doc = new Document();
+  QPlainTextDocumentLayout* documentLayout = new QPlainTextDocumentLayout(doc);
+  doc->setDocumentLayout(documentLayout);
+  Application::getInstance()->setDocument(doc);
+  m_ui->codeEditor->setDocument(doc);
+}
+
 void MainWindow::setupScene() {
+  m_scene = new Scene(Application::getInstance()->document());
+  m_ui->graphicsView->setScene(m_scene);
+}
+
+void MainWindow::setupGraphicsView() {
+  const qreal defaultViewSplitRate = systemConfig(SystemConfig::defaultViewSplitRate).toReal();
+  const qreal lhs = defaultViewSplitRate * 100 * 10;
+  const qreal rhs = (1 - defaultViewSplitRate) * 100 * 10;
+  m_ui->splitter->setSizes(QList<int32_t>() << lhs << rhs);
 }
 
 void MainWindow::setupMenu() {
