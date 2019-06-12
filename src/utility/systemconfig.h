@@ -3,9 +3,9 @@
 
 #include <QVariant>
 
+namespace SystemConfig {
 #define DefineConfig(name) constexpr const char* name = #name
 
-namespace SystemConfig {
 DefineConfig(backgroundColor);
 DefineConfig(exportPngTransparent);
 DefineConfig(styleSheetPath);

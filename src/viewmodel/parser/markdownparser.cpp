@@ -76,7 +76,7 @@ bool MarkdownParser::isValidLine(const QString& line) const {
   return true;
 }
 
-bool MarkdownParser::hasRootNode(QString rootLine) {
+bool MarkdownParser::hasRootNode(const QString rootLine) const {
   uint32_t rootIndent = indentCount(rootLine);
   if (0 == rootIndent) {
     return true;
@@ -84,7 +84,7 @@ bool MarkdownParser::hasRootNode(QString rootLine) {
   return false;
 }
 
-bool MarkdownParser::hasMonoRootNode(QStringList validLines) {
+bool MarkdownParser::hasMonoRootNode(QStringList validLines) const {
   foreach (QString validLine, validLines) {
     if (!isValidLine(validLine)) {
       continue;

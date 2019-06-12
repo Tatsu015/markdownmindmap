@@ -5,7 +5,8 @@
 #include <QPen>
 
 Node::Node(const QString& text, const uint32_t depth, const uint32_t lineCount, QGraphicsItem* parent)
-    : QGraphicsSimpleTextItem(text, parent), m_depth(depth), m_connection(new Connection(this)) {
+    : QGraphicsSimpleTextItem(text, parent), m_depth(depth), m_connection(new Connection(this)),
+      m_lineCount(lineCount) {
   QColor color = systemConfig(SystemConfig::textColor).value<QColor>();
   setPen(QPen(color));
   setBrush(QBrush(color));
