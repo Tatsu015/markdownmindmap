@@ -5,6 +5,11 @@ uint32_t indentCount(const QString& data, const QChar indentKey) {
   if (0 >= data.count()) {
     return 0;
   }
+  QString unIndentKeyData = data;
+  unIndentKeyData = unIndentKeyData.replace(indentKey, "");
+  if (0 >= unIndentKeyData.count()) {
+    return 0;
+  }
   while (indentKey == data[count]) {
     ++count;
   }
