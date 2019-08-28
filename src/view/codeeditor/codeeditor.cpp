@@ -1,10 +1,15 @@
 #include "codeeditor.h"
+#include "controller/application.h"
+#include "model/document.h"
 #include "ui_mainwindow.h"
 #include "utility/stringutil.h"
 #include "view/codeeditor/keybehavior/backtabkeybehavior.h"
 #include "view/codeeditor/keybehavior/returnkeybehavior.h"
 #include "view/codeeditor/keybehavior/tabkeybehavior.h"
+#include <QFile>
+#include <QMimeData>
 #include <QTextBlock>
+#include <QTextStream>
 
 CodeEditor::CodeEditor(QWidget* parent) : QPlainTextEdit(parent) {
   m_keyBehavior[Qt::Key_Tab] = new TabKeyBehavior();
@@ -23,4 +28,20 @@ void CodeEditor::keyPressEvent(QKeyEvent* event) {
   } else {
     QPlainTextEdit::keyPressEvent(event);
   }
+}
+
+void CodeEditor::dropEvent(QDropEvent* event) {
+  QString filePath = event->mimeData()->urls().first().toLocalFile();
+
+  QFile f(filePath);
+  if (!f.open(QIODevice::ReadOnly)) {
+    return;
+  }
+  Application::getInstance()->document()->setFilePath(filePath);
+  QTextStream in(&f);
+  in.setCodec("UTF-8");
+  const QString readData = in.readAll();
+  Application::getInstance()->document()->setPlainText(readData);
+
+  f.close();
 }

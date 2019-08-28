@@ -15,6 +15,8 @@ public:
 protected:
   virtual void keyPressEvent(QKeyEvent* event) override;
 
+  virtual void dropEvent(QDropEvent* event) override;
+
 private:
   QMap<Qt::Key, AbstractKeyBehavior*> m_keyBehavior;
 };
