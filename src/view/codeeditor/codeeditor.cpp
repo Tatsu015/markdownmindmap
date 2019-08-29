@@ -31,17 +31,24 @@ void CodeEditor::keyPressEvent(QKeyEvent* event) {
 }
 
 void CodeEditor::dropEvent(QDropEvent* event) {
-  QString filePath = event->mimeData()->urls().first().toLocalFile();
+  QList<QUrl> urls = event->mimeData()->urls();
+  // if drop data is markdowdmindmap project file, open project.
+  // else default drop event process.
+  if (0 >= urls.count()) {
+    QPlainTextEdit::dropEvent(event);
+  } else {
+    QString filePath = event->mimeData()->urls().first().toLocalFile();
 
-  QFile f(filePath);
-  if (!f.open(QIODevice::ReadOnly)) {
-    return;
+    QFile f(filePath);
+    if (!f.open(QIODevice::ReadOnly)) {
+      return;
+    }
+    Application::getInstance()->document()->setFilePath(filePath);
+    QTextStream in(&f);
+    in.setCodec("UTF-8");
+    const QString readData = in.readAll();
+    Application::getInstance()->document()->setPlainText(readData);
+
+    f.close();
   }
-  Application::getInstance()->document()->setFilePath(filePath);
-  QTextStream in(&f);
-  in.setCodec("UTF-8");
-  const QString readData = in.readAll();
-  Application::getInstance()->document()->setPlainText(readData);
-
-  f.close();
 }
