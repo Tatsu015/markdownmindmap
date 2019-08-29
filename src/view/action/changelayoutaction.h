@@ -10,6 +10,8 @@ public:
   ChangeLayoutAction(QObject* parent = nullptr);
   virtual ~ChangeLayoutAction();
 
+  virtual void init();
+
 protected slots:
   void execute();
 

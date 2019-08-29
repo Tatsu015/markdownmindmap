@@ -6,6 +6,7 @@
 #include "view/action/changelayoutaction.h"
 #include "view/action/exitaction.h"
 #include "view/action/exportpngaction.h"
+#include "view/action/exporttransparentpngaction.h"
 #include "view/action/newaction.h"
 #include "view/action/openaction.h"
 #include "view/action/saveaction.h"
@@ -60,9 +61,11 @@ void MainWindow::setupMenu() {
   setupAction(fileMenu, new OpenAction());
   setupAction(fileMenu, new SaveAction());
   setupAction(fileMenu, new SaveAsAction());
+
   QMenu* exportMenu = new QMenu("Export");
   fileMenu->addMenu(exportMenu);
   setupAction(exportMenu, new ExportPngAction());
+  setupAction(exportMenu, new ExportTransparentPngAction());
   setupAction(fileMenu, new ExitAction());
 
   QMenu* viewMenu = new QMenu("View");
@@ -81,5 +84,6 @@ void MainWindow::setupStyleSheet() {
 }
 
 void MainWindow::setupAction(QMenu* menu, AbstractAction* action) {
+  action->init();
   menu->addActions(action->actions());
 }

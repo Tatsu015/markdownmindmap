@@ -11,6 +11,7 @@ class AbstractAction : public QObject {
 public:
   AbstractAction(QObject* parent = nullptr);
   virtual ~AbstractAction();
+  virtual void init() = 0;
 
   QList<QAction*> actions() const;
 

@@ -14,7 +14,6 @@ namespace SystemConfig {
 #define DefineConfig(name) constexpr const char* name = #name
 
 DefineConfig(backgroundColor);
-DefineConfig(exportPngTransparent);
 DefineConfig(styleSheetPath);
 DefineConfig(textColor);
 DefineConfig(connectionColor);

@@ -24,46 +24,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
-SOURCES += \
-    controller/application.cpp \
-    model/document.cpp \
-    view/action/abstractaction.cpp \
-    view/action/exitaction.cpp \
-    view/action/newaction.cpp \
-    view/action/openaction.cpp \
-    view/action/saveaction.cpp \
-    view/action/saveasaction.cpp \
-    view/action/exportpngaction.cpp \
-    view/codeeditor/codeeditor.cpp \
-    view/graphicsview/graphicsview.cpp \
-    view/window/mainwindow.cpp \
-    viewmodel/graphicsitem/connection.cpp \
-    viewmodel/graphicsitem/node.cpp \
-    viewmodel/parser/markdownparser.cpp \
-    viewmodel/scene/layoutproxy/abstractlayoutproxy.cpp \
-    viewmodel/scene/layoutproxy/lefttorighttreelayoutproxy.cpp \
-    viewmodel/scene/layoutproxy/toptobottomtreelayoutproxy.cpp \
-    viewmodel/scene/layoutproxy/bothsidestreelayoutproxy.cpp \
-    viewmodel/scene/scene.cpp \
-    main.cpp \
-    utility/systemconfig.cpp \
-    view/action/changelayoutaction.cpp \
-    utility/stringutil.cpp \
-    view/codeeditor/keybehavior/abstractkeybehavior.cpp \
-    view/codeeditor/keybehavior/tabkeybehavior.cpp \
-    view/codeeditor/keybehavior/backtabkeybehavior.cpp \
-    view/codeeditor/keybehavior/returnkeybehavior.cpp \
-
 HEADERS += \
     controller/application.h \
     model/document.h \
+    utility/definition.h \
+    utility/stringutil.h \
+    utility/systemconfig.h \
     view/action/abstractaction.h \
+    view/action/changelayoutaction.h \
     view/action/exitaction.h \
+    view/action/exportpngaction.h \
+    view/action/exporttransparentpngaction.h \
     view/action/newaction.h \
     view/action/openaction.h \
     view/action/saveaction.h \
     view/action/saveasaction.h \
-    view/action/exportpngaction.h \
+    view/codeeditor/keybehavior/abstractkeybehavior.h \
+    view/codeeditor/keybehavior/backtabkeybehavior.h \
+    view/codeeditor/keybehavior/returnkeybehavior.h \
+    view/codeeditor/keybehavior/tabkeybehavior.h \
     view/codeeditor/codeeditor.h \
     view/graphicsview/graphicsview.h \
     view/window/mainwindow.h \
@@ -71,24 +50,45 @@ HEADERS += \
     viewmodel/graphicsitem/node.h \
     viewmodel/parser/markdownparser.h \
     viewmodel/scene/layoutproxy/abstractlayoutproxy.h \
+    viewmodel/scene/layoutproxy/bothsidestreelayoutproxy.h \
     viewmodel/scene/layoutproxy/lefttorighttreelayoutproxy.h \
     viewmodel/scene/layoutproxy/toptobottomtreelayoutproxy.h \
-    viewmodel/scene/layoutproxy/bothsidestreelayoutproxy.h \
-    viewmodel/scene/scene.h \
-    utility/systemconfig.h \
-    view/action/changelayoutaction.h \
-    utility/stringutil.h \
-    view/codeeditor/keybehavior/abstractkeybehavior.h \
-    view/codeeditor/keybehavior/tabkeybehavior.h \
-    view/codeeditor/keybehavior/backtabkeybehavior.h \
-    view/codeeditor/keybehavior/returnkeybehavior.h \
-    utility/definition.h
+    viewmodel/scene/scene.h
 
+SOURCES += \
+    controller/application.cpp \
+    model/document.cpp \
+    utility/stringutil.cpp \
+    utility/systemconfig.cpp \
+    view/action/abstractaction.cpp \
+    view/action/changelayoutaction.cpp \
+    view/action/exitaction.cpp \
+    view/action/exportpngaction.cpp \
+    view/action/exporttransparentpngaction.cpp \
+    view/action/newaction.cpp \
+    view/action/openaction.cpp \
+    view/action/saveaction.cpp \
+    view/action/saveasaction.cpp \
+    view/codeeditor/keybehavior/abstractkeybehavior.cpp \
+    view/codeeditor/keybehavior/backtabkeybehavior.cpp \
+    view/codeeditor/keybehavior/returnkeybehavior.cpp \
+    view/codeeditor/keybehavior/tabkeybehavior.cpp \
+    view/codeeditor/codeeditor.cpp \
+    view/graphicsview/graphicsview.cpp \
+    view/window/mainwindow.cpp \
+    viewmodel/graphicsitem/connection.cpp \
+    viewmodel/graphicsitem/node.cpp \
+    viewmodel/parser/markdownparser.cpp \
+    viewmodel/scene/layoutproxy/abstractlayoutproxy.cpp \
+    viewmodel/scene/layoutproxy/bothsidestreelayoutproxy.cpp \
+    viewmodel/scene/layoutproxy/lefttorighttreelayoutproxy.cpp \
+    viewmodel/scene/layoutproxy/toptobottomtreelayoutproxy.cpp \
+    viewmodel/scene/scene.cpp \
+    main.cpp
 
 FORMS += \
     view/window/mainwindow.ui
 
-# Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
+qnx: target.path = ../bin
+else: unix:!android: target.path = ../bin
 !isEmpty(target.path): INSTALLS += target

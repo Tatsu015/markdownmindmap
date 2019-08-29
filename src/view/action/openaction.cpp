@@ -9,13 +9,16 @@
 #include <QTextStream>
 
 OpenAction::OpenAction(QObject* parent) : AbstractAction(parent) {
+}
+
+OpenAction::~OpenAction() {
+}
+
+void OpenAction::init() {
   QAction* openAction = new QAction("Open");
   openAction->setShortcut(QKeySequence::Open);
   connect(openAction, &QAction::triggered, this, &OpenAction::execute);
   m_actions << openAction;
-}
-
-OpenAction::~OpenAction() {
 }
 
 void OpenAction::execute() {

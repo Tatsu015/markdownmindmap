@@ -10,13 +10,16 @@
 #include <QTextStream>
 
 SaveAsAction::SaveAsAction(QObject* parent) : AbstractAction(parent) {
+}
+
+SaveAsAction::~SaveAsAction() {
+}
+
+void SaveAsAction::init() {
   QAction* saveAcAction = new QAction("Save As");
   saveAcAction->setShortcut(QKeySequence::SaveAs);
   connect(saveAcAction, &QAction::triggered, this, &SaveAsAction::execute);
   m_actions << saveAcAction;
-}
-
-SaveAsAction::~SaveAsAction() {
 }
 
 void SaveAsAction::execute() {

@@ -8,6 +8,8 @@ public:
   OpenAction(QObject* parent = nullptr);
   virtual ~OpenAction();
 
+  virtual void init();
+
 protected slots:
   void execute();
 };

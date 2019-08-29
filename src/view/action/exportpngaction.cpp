@@ -10,12 +10,25 @@
 #include <QImage>
 
 ExportPngAction::ExportPngAction(QObject* parent) : AbstractAction(parent) {
+}
+
+ExportPngAction::~ExportPngAction() {
+}
+
+void ExportPngAction::init() {
   QAction* exportAction = new QAction("Export PNG");
   connect(exportAction, &QAction::triggered, this, &ExportPngAction::execute);
   m_actions << exportAction;
 }
 
-ExportPngAction::~ExportPngAction() {
+QImage ExportPngAction::imageFromGraphicsView(const QGraphicsView* graphicsView) const {
+  QGraphicsScene* scene = graphicsView->scene();
+  scene->clearSelection();
+  scene->setSceneRect(scene->itemsBoundingRect());
+  QImage image(scene->sceneRect().size().toSize(), QImage::Format_ARGB32);
+  image.fill(graphicsView->backgroundBrush().color());
+
+  return image;
 }
 
 void ExportPngAction::execute() {
@@ -31,15 +44,7 @@ void ExportPngAction::execute() {
 
   QGraphicsView* graphicsView = Application::getInstance()->ui()->graphicsView;
   QGraphicsScene* scene = graphicsView->scene();
-  scene->clearSelection();
-  scene->setSceneRect(scene->itemsBoundingRect());
-  QImage image(scene->sceneRect().size().toSize(), QImage::Format_ARGB32);
-
-  if (systemConfig(SystemConfig::exportPngTransparent).toBool()) {
-    image.fill(Qt::transparent);
-  } else {
-    image.fill(graphicsView->backgroundBrush().color());
-  }
+  QImage image = imageFromGraphicsView(graphicsView);
 
   QPainter painter(&image);
   scene->render(&painter);

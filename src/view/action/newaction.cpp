@@ -10,13 +10,16 @@
 #include <QTextStream>
 
 NewAction::NewAction(QObject* parent) : AbstractAction(parent) {
+}
+
+NewAction::~NewAction() {
+}
+
+void NewAction::init() {
   QAction* newAction = new QAction("New");
   newAction->setShortcut(QKeySequence::New);
   connect(newAction, &QAction::triggered, this, &NewAction::execute);
   m_actions << newAction;
-}
-
-NewAction::~NewAction() {
 }
 
 void NewAction::execute() {

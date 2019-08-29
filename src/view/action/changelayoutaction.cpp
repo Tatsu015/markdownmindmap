@@ -17,14 +17,17 @@
 
 ChangeLayoutAction::ChangeLayoutAction(QObject* parent)
     : AbstractAction(parent), m_actionGroup(new QActionGroup(nullptr)) {
+}
+
+ChangeLayoutAction::~ChangeLayoutAction() {
+}
+
+void ChangeLayoutAction::init() {
   addAction(new QAction(LeftToRightTreeLayoutProxy::NAME));
   addAction(new QAction(TopToBottomTreeLayoutProxy::NAME));
   addAction(new QAction(BothSidesTreeLayoutProxy::NAME));
 
   setDefaultAction(m_actions.first());
-}
-
-ChangeLayoutAction::~ChangeLayoutAction() {
 }
 
 void ChangeLayoutAction::execute() {

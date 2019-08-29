@@ -8,6 +8,8 @@ public:
   ExitAction(QObject* parent = nullptr);
   virtual ~ExitAction();
 
+  virtual void init();
+
 protected slots:
   void execute();
 };

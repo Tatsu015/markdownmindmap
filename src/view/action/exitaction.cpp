@@ -10,13 +10,16 @@
 #include <QTextStream>
 
 ExitAction::ExitAction(QObject* parent) : AbstractAction(parent) {
+}
+
+ExitAction::~ExitAction() {
+}
+
+void ExitAction::init() {
   QAction* exitAction = new QAction("Exit");
   exitAction->setShortcut(QKeySequence::Quit);
   connect(exitAction, &QAction::triggered, this, &ExitAction::execute);
   m_actions << exitAction;
-}
-
-ExitAction::~ExitAction() {
 }
 
 void ExitAction::execute() {
