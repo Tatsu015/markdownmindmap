@@ -41,16 +41,20 @@ Node* MarkdownParser::parse(const QString& data) {
     uint32_t depth = indentCount(validLine);
     QString text = validLine.simplified();
     currentNode = new Node(text, depth, lineCount);
-    if (currentNode->depth() == lastNode->depth()) {
+    int32_t depthDiff = static_cast<int32_t>(lastNode->depth() - currentNode->depth());
+    if (0 == depthDiff) {
       lastNode->parentNode()->addChildNode(currentNode);
-    } else if (currentNode->depth() < lastNode->depth()) {
-      uint32_t depthDiff = static_cast<uint32_t>(lastNode->depth() - currentNode->depth());
+    } else if (0 < depthDiff) {
       Node* parentNode = lastNode->parentNode();
-      for (uint32_t d = 0; d < depthDiff; ++d) {
-        parentNode = parentNode->parentNode();
+      while (parentNode->depth() >= currentNode->depth()) {
+        if (parentNode->parentNode()) {
+          parentNode = parentNode->parentNode();
+        } else {
+          break;
+        }
       }
       parentNode->addChildNode(currentNode);
-    } else if (currentNode->depth() > lastNode->depth()) {
+    } else if (0 > depthDiff) {
       lastNode->addChildNode(currentNode);
     }
     lastNode = currentNode;
