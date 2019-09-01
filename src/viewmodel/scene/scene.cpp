@@ -26,15 +26,15 @@ Scene::~Scene() {
 
 void Scene::updateMindMap() {
   MarkdownParser parser;
-  Node* rootNode = parser.parse(m_document->toPlainText());
+  m_rootNode = parser.parse(m_document->toPlainText());
 
-  if (!rootNode) {
+  if (!m_rootNode) {
     return;
   }
 
-  m_activeLayoutProxy->layout(rootNode);
+  m_activeLayoutProxy->layout(m_rootNode);
   clear();
-  addItem(rootNode);
+  addItem(m_rootNode);
 }
 
 void Scene::addLayouterDecorator(AbstractLayoutProxy* layoutDecolator) {
@@ -54,4 +54,8 @@ void Scene::onStartTimer() {
 void Scene::onUpdateMindMap() {
   updateMindMap();
   m_timer->stop();
+}
+
+Node* Scene::rootNode() const {
+  return m_rootNode;
 }

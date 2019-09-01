@@ -19,12 +19,17 @@ public:
   uint32_t depth() const;
   uint32_t lineCount() const;
 
+  QString toString() const;
+
   QPointF topCenter() const;
   QPointF rightCenter() const;
   QPointF bottomCenter() const;
   QPointF leftCenter() const;
 
   Connection* connection() const;
+
+private:
+  QString toStringRecursive(const QString& indent) const;
 
 private:
   Node* m_parentNode = nullptr;

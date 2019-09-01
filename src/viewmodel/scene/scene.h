@@ -14,6 +14,7 @@ public:
   virtual ~Scene();
 
   void changeActiveLayoutDecolator(const QString& name);
+  Node* rootNode() const;
 
 private:
   void updateMindMap();
@@ -28,6 +29,7 @@ private:
   QMap<QString, AbstractLayoutProxy*> m_layoutProxies;
   AbstractLayoutProxy* m_activeLayoutProxy = nullptr;
   QTimer* m_timer = nullptr;
+  Node* m_rootNode = nullptr;
 };
 
 #endif // SCENE_H

@@ -48,6 +48,11 @@ uint32_t Node::lineCount() const {
   return m_lineCount;
 }
 
+QString Node::toString() const {
+  QString buf = toStringRecursive("");
+  return buf;
+}
+
 QPointF Node::topCenter() const {
   return QPointF(boundingRect().center().x(), boundingRect().top());
 }
@@ -66,4 +71,11 @@ QPointF Node::leftCenter() const {
 
 Connection* Node::connection() const {
   return m_connection;
+}
+
+QString Node::toStringRecursive(const QString& indent) const {
+  QString buf;
+  buf += indent + text() + "\n";
+  foreach (Node* childNode, m_childNodes) { buf += childNode->toStringRecursive(indent + " "); }
+  return buf;
 }

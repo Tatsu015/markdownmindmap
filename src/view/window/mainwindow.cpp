@@ -27,6 +27,8 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), m_ui(new Ui::Main
   setupGraphicsView();
   setupMenu();
   setupStyleSheet();
+
+  Application::getInstance()->recoverLastCrash();
 }
 
 MainWindow::~MainWindow() {

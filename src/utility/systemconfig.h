@@ -26,6 +26,8 @@ DefineConfig(topToBottomTreeLayoutNodeXSpace);
 DefineConfig(topToBottomTreeLayoutNodeYSpace);
 DefineConfig(bothSidesTreeLayoutNodeXSpace);
 DefineConfig(bothSidesTreeLayoutNodeYSpace);
+DefineConfig(autoFormatWhenSave);
+DefineConfig(autoSaveInterval);
 // ADD HERE TO DEFINECONFIG
 }
 

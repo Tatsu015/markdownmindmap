@@ -4,6 +4,9 @@
 #include "model/document.h"
 #include "ui_mainwindow.h"
 #include "utility/definition.h"
+#include "utility/systemconfig.h"
+#include "viewmodel/graphicsitem/node.h"
+#include "viewmodel/scene/scene.h"
 #include <QAction>
 #include <QFile>
 #include <QFileDialog>
@@ -23,7 +26,19 @@ void SaveAction::init() {
 }
 
 void SaveAction::execute() {
-  emit Application::getInstance()->document()->contentsChanged();
+  Document* document = Application::getInstance()->document();
+  // need to draw graphics before auto format,
+  // because format text generate from graphics datas.
+  emit document->contentsChanged();
+  if (systemConfig(SystemConfig::autoFormatWhenSave).toBool()) {
+    Scene* scene = Application::getInstance()->ui()->graphicsView->customScene();
+    QString buf = scene->rootNode()->toString();
+    if (!buf.isEmpty()) {
+      if ('\n' != buf.at(0)) {
+        document->setPlainText(buf);
+      }
+    }
+  }
 
   QString filePath;
   if (Application::getInstance()->document()->filePath().isEmpty()) {
