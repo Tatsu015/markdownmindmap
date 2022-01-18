@@ -46,7 +46,6 @@ void ExitAction::execute() {
     return;
   }
   QTextStream out(&f);
-  out.setCodec("UTF-8");
   out << Application::getInstance()->document()->toPlainText();
   f.close();
   qApp->exit(0);

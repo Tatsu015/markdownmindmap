@@ -31,7 +31,6 @@ void OpenAction::execute() {
   }
   Application::getInstance()->document()->setFilePath(filePath);
   QTextStream in(&f);
-  in.setCodec("UTF-8");
   const QString readData = in.readAll();
   Application::getInstance()->document()->setPlainText(readData);
 

@@ -13,6 +13,7 @@
 #include "view/action/saveasaction.h"
 #include "viewmodel/graphicsitem/node.h"
 #include "viewmodel/scene/scene.h"
+#include <QFile>
 #include <QKeyEvent>
 #include <QPlainTextDocumentLayout>
 

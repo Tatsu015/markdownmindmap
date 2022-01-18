@@ -64,7 +64,7 @@ Node* MarkdownParser::parse(const QString& data) {
 
 QStringList MarkdownParser::toValidLines(const QString& data) {
   QStringList validLines;
-  foreach (QString line, data.split(RETURN_CODE, QString::SkipEmptyParts)) {
+  foreach (QString line, data.split(RETURN_CODE, Qt::SkipEmptyParts)) {
     // skip only blank line
     if (!line.simplified().isEmpty()) {
       validLines << line;

@@ -36,7 +36,7 @@ When use this command, you need to add qmake path to the environment path.
 - sample project file exist in sample directory.
 
 ## Author
-Tatsumi Soichiro
+Tatsu015
 
 ## License
 [MIT](http://b4b4r07.mit-license.org)

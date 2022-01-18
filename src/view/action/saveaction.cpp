@@ -1,6 +1,5 @@
 #include "saveaction.h"
 #include "controller/application.h"
-#include "controller/application.h"
 #include "model/document.h"
 #include "ui_mainwindow.h"
 #include "utility/definition.h"
@@ -58,7 +57,6 @@ void SaveAction::execute() {
   }
   Application::getInstance()->document()->setFilePath(filePath);
   QTextStream out(&f);
-  out.setCodec("UTF-8");
   out << Application::getInstance()->document()->toPlainText();
   f.close();
 }

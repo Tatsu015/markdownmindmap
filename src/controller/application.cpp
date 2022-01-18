@@ -56,7 +56,6 @@ void Application::recoverLastCrash() {
     return;
   }
   QTextStream in(&f);
-  in.setCodec("UTF-8");
   const QString readData = in.readAll();
   m_document->setPlainText(readData);
 
@@ -69,7 +68,6 @@ void Application::onAutoSave() {
     return;
   }
   QTextStream out(&f);
-  out.setCodec("UTF-8");
   out << Application::getInstance()->document()->toPlainText();
   f.close();
 }
