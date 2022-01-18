@@ -4,8 +4,8 @@ A mindmap drawing tool by text format.
 ## Description
 MarkdownMindMap is a tool for drawing mindmap diagram based on a simple syntax.
 
-***DEMO:***
-![Demo](https://image-url.gif)
+## DEMO
+![](https://user-images.githubusercontent.com/97239922/149974526-6f7cb960-22c7-42e9-856c-baf6e444a8a6.gif)
 
 ## Features
 - Almost no cost to learn how to use.
