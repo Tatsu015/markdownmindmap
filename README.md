@@ -26,8 +26,8 @@ MarkdownMindMap is a tool for drawing mindmap diagram based on a simple syntax.
 ## Installation
 Paste the following commands at a Terminal prompt.
 
-    $ git clone https://github.com/xxx
-    cd xxx
+    $ git clone https://github.com/Tatsu015/markdownmindmap.git
+    cd markdownmindmap
     ./build.sh
 
 When use this command, you need to add qmake path to the environment path.
